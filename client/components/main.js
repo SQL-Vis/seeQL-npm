@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import SearchVis from './SearchVis'
 
 export class Main extends React.Component {
   async componentDidMount() {}
@@ -12,7 +13,7 @@ export class Main extends React.Component {
           <button>Submit Query</button>
         </div>
         <div className="queryVisBox">
-          <p>This is where the visualizations will go</p>
+          <SearchVis />
         </div>
         <div className="resultBox">
           <p>This is where the result will go</p>

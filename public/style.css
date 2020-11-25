@@ -19,3 +19,19 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.table-container {
+  display: flex;
+  flex-direction: row;
+}
+
+td {
+  border-top: solid 1px grey;
+  border-left: solid 1px black;
+}
+
+.vis-table {
+  margin: 20px;
+  padding: 5px;
+  border: solid 1px black;
+}

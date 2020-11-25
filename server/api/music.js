@@ -21,14 +21,6 @@ router.get('/models', async (req, res, next) => {
     const [results, metadata] = await db.query(
       "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema='public'"
     )
-    // let tableNames = results.map(async (element) =>
-    //   {
-    //     let tableName = 'songs';
-    //     console.log("ZEBRA", tableName)
-    //     const [columnArray, columnMetadata] = await db.query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'songs'")
-    //     const mapped = columnArray.map((element2) => element2.column_name)
-    //     console.log("HELLO", columnArray)
-    //   });
     let prettierArray = results.reduce(
       (accum, element) => {
         for (let i = 0; i < accum.length; i++) {
@@ -36,11 +28,11 @@ router.get('/models', async (req, res, next) => {
           let tableName = element.table_name
           let columnName = element.column_name
           if (current[tableName]) {
-            console.log('PANDA', current, tableName, columnName)
-            //current[tableName].push(columnName)
-          } else {
+            current[tableName].push(columnName)
+            break
+          } else if (i === accum.length - 1) {
             let newObj = {}
-            newObj[tableName] = columnName
+            newObj[tableName] = []
             accum.push(newObj)
           }
         }
@@ -48,7 +40,7 @@ router.get('/models', async (req, res, next) => {
       },
       ['test']
     )
-    res.send(prettierArray)
+    res.send(prettierArray.slice(1))
   } catch (err) {
     next(err)
   }
