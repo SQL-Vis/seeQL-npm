@@ -1,4 +1,3 @@
-const User = require('./user')
 const Artist = require('./artist')
 const Album = require('./album')
 const Song = require('./song')
@@ -24,7 +23,6 @@ Album.belongsTo(Artist)
  * instead of: const User = require('../db/models/user')
  */
 module.exports = {
-  User,
   Artist,
   Album,
   Song
