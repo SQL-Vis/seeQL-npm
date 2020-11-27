@@ -7,6 +7,7 @@ export class SearchVis extends React.Component {
     this.props.getModels()
   }
   render() {
+    const queryVis = this.props.queryVis || {}
     return (
       <div className="table-container">
         {this.props.tables.map(table => {
@@ -21,7 +22,16 @@ export class SearchVis extends React.Component {
               <tbody>
                 {table[tableName].map(column => {
                   return (
-                    <tr key={column}>
+                    <tr
+                      key={column}
+                      id={tableName + column}
+                      className={
+                        queryVis.select &&
+                        queryVis.select.includes(tableName + column)
+                          ? 'highlighted'
+                          : 'notHighlighted'
+                      }
+                    >
                       <td>{column}</td>
                     </tr>
                   )
@@ -36,7 +46,8 @@ export class SearchVis extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  tables: state.tables
+  tables: state.tables,
+  queryVis: state.queryVis
 })
 
 const mapDispatchToProps = dispatch => ({

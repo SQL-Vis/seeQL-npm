@@ -35,3 +35,7 @@ td {
   padding: 5px;
   border: solid 1px black;
 }
+
+.highlighted {
+  background-color: pink;
+}

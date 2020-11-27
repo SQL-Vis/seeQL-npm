@@ -7,7 +7,7 @@ const db = require('../db')
 router.get('/', async (req, res, next) => {
   try {
     const ast = parser.astify(
-      'SELECT length AND artist FROM songs WHERE artistId = 2'
+      'select songs.title, artists.age from songs left join artists on song.artistId = artists.id'
     ) // mysql sql grammer parsed by default
     console.log(ast)
     res.send(ast)
