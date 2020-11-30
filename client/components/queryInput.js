@@ -65,14 +65,12 @@ export class QueryInput extends React.Component {
                 </button>
               </div>
             </form>
-            {/* <div>{this.state.lastSearches}</div> */}
           </div>
           <div className="col s6">
             <label>Query History</label>
             <ul className="collection">
               {this.state.lastSearches &&
                 this.state.lastSearches.map(search => {
-                  console.log(this.state.selectedVis === search)
                   return (
                     <li
                       key={search}
@@ -97,8 +95,10 @@ export class QueryInput extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="current-search">
-            <p>Current search:{this.state.selectedVis} </p>
+          <div className="card ">
+            <div className="card-content ">
+              Current search: {this.state.selectedVis}
+            </div>
           </div>
         </div>
       </div>
