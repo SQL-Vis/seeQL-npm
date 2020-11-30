@@ -1,3 +1,7 @@
+#### Sample Queries
+
+select songs.title, artists.age from songs right join artists on songs.artistId = artists.id
+
 # Boilermaker
 
 _Good things come in pairs_

@@ -25,6 +25,29 @@ router.post('/', async (req, res, next) => {
       const idStr = tableName + columnName
       visInfo[ast.type].push(idStr)
     })
+
+
+    /// Adding JOINs to visInfo Array
+    visInfo.join = []
+
+    if (ast.from) {
+      let fromArray = ast.from
+      for (let i = 0; i < fromArray.length; i++) {
+        console.log('hi')
+        if (fromArray[i].join) {
+          let joinSource = fromArray[i]
+          let joinObject = {
+            type: joinSource.join,
+            left: joinSource.on.left.table + joinSource.on.left.column,
+            right: joinSource.on.right.table + joinSource.on.right.column
+          }
+          visInfo.join.push(joinObject)
+        }
+      }
+    }
+
+    console.log(visInfo)
+
     res.send(visInfo)
   } catch (err) {
     next(err)
