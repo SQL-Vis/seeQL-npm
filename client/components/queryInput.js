@@ -31,7 +31,7 @@ export class QueryInput extends React.Component {
     // console.log("PROPS ", this.props)
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="submit-form" onSubmit={this.handleSubmit}>
           <div className="input-field">
             <input
               value={this.state.query}
@@ -50,7 +50,10 @@ export class QueryInput extends React.Component {
             </button>
           </div>
         </form>
-        <div>{this.state.lastSearch}</div>
+        <div id="last-search">
+          <span className="bold-title">Currently Displayed Search:</span>{' '}
+          {this.state.lastSearch}
+        </div>
       </div>
     )
   }
