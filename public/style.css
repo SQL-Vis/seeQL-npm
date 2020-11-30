@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  background-color: #ffeca1;
+  /* background-color: #fffce3 */
 }
 
 a {
@@ -27,18 +29,43 @@ form div {
 
 td {
   border-top: solid 1px grey;
-  border-left: solid 1px black;
 }
 
 .vis-table {
   margin: 20px;
   padding: 5px;
-  border: solid 1px black;
+  background-color: #fffef7;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
 
-.highlighted,
-#highlighted {
-  background-color: pink;
+.table-title {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+  background-color: #ffb05f;
+  /* #b2dfdb */
+}
+
+#last-search {
+  margin: 20px;
+  padding: 5px;
+  background-color: #fffef7;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+
+.highlighted, #highlighted {
+  background-color: #e0f2f1;
+}
+
+.bold-title {
+  font-weight: bold;
+}
+
+.result-table {
+  width: 100%;
 }
 
 .collection-item:hover {

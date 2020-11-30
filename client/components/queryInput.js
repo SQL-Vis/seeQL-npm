@@ -41,6 +41,7 @@ export class QueryInput extends React.Component {
     this.props.getQueryVis(this.state.selectedVis)
   }
   render() {
+    // console.log("PROPS ", this.props)
     return (
       <div>
         <div className="row">

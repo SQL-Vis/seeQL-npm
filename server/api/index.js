@@ -1,7 +1,6 @@
 const router = require('express').Router()
 module.exports = router
 
-router.use('/users', require('./users'))
 router.use('/music', require('./music'))
 router.use('/query', require('./query'))
 

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
 import {fetchTables} from '../store/searchvis'
 import Xarrow from 'react-xarrows'
@@ -10,7 +10,7 @@ export class SearchVis extends React.Component {
   }
   render() {
     const queryVis = this.props.queryVis || {}
-    console.log('ZEBRA', queryVis)
+    // console.log('ZEBRA', queryVis)
     return (
       <div className="table-container">
         {this.props.tables.map(table => {
@@ -19,7 +19,7 @@ export class SearchVis extends React.Component {
             <table className="vis-table" key={tableName}>
               <thead>
                 <tr>
-                  <th>{tableName}</th>
+                  <th className="table-title">{tableName}</th>
                 </tr>
               </thead>
               <tbody>
@@ -65,7 +65,8 @@ export class SearchVis extends React.Component {
                 start={joinObject.left}
                 end={joinObject.right}
                 label={joinObject.type}
-                color="Teal"
+                color="#26a69a"
+                dashness={{strokeLen: 10, nonStrokeLen: 10, animation: 1.5}}
               />
             )
           })}
