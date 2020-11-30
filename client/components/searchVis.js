@@ -35,7 +35,20 @@ export class SearchVis extends React.Component {
                           : 'notHighlighted'
                       }
                     >
-                      <td>{column}</td>
+                      <td
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between'
+                        }}
+                      >
+                        {column}
+                        {column.includes('id') && (
+                          <i className="material-icons">fingerprint</i>
+                        )}
+                        {column.includes('Id') && (
+                          <i className="material-icons">star</i>
+                        )}
+                      </td>
                     </tr>
                   )
                 })}
