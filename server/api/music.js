@@ -22,33 +22,54 @@ router.get('/models', async (req, res, next) => {
     const [results, metadata] = await db.query(
       "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema='public'"
     )
-    let prettierArray = results.reduce(
-      (accum, element) => {
-        for (let i = 0; i < accum.length; i++) {
-          let current = accum[i]
-          let tableName = element.table_name
-          let columnName = element.column_name
-          if (current[tableName]) {
-            current[tableName].push(columnName)
-            break
-          } else if (i === accum.length - 1) {
-            let newObj = {}
-            newObj[tableName] = []
-            accum.push(newObj)
-          }
-        }
-        return accum
-      },
-      ['test']
-    )
     //redid with lodash
-    let result = prettierArray.slice(1)
-    _.forEach(result, function(value) {
+    let prettierArray = _.reduce(
+      results,
+      function(result, value) {
+        let tableName = value.table_name
+        let columnName = value.column_name
+        let exists = _.find(result, function(o) {
+          return o[tableName]
+        })
+        if (exists) {
+          exists[tableName].push(columnName)
+        } else {
+          let obj = {}
+          obj[tableName] = [columnName]
+          result.push(obj)
+        }
+        return result
+      },
+      []
+    )
+
+    //original script
+    // let prettierArray = results.reduce(
+    //   (accum, element) => {
+    //     for (let i = 0; i < accum.length; i++) {
+    //       let current = accum[i]
+    //       let tableName = element.table_name
+    //       let columnName = element.column_name
+    //       if (current[tableName]) {
+    //         current[tableName].push(columnName)
+    //         break
+    //       } else if (i === accum.length - 1) {
+    //         let newObj = {}
+    //         newObj[tableName] = []
+    //         accum.push(newObj)
+    //       }
+    //     }
+    //     return accum
+    //   },
+    //   ['test']
+    // )
+    //redid with lodash
+    _.forEach(prettierArray, function(value) {
       _.forEach(value, function(value, key) {
         value.sort().unshift(value.splice(value.indexOf('id'), 1)[0])
       })
     })
-    res.send(result)
+    res.send(prettierArray)
     //original script
     // let songsArray = prettierArray.slice(1)[0].songs.sort()
     // songsArray.unshift(songsArray.splice(songsArray.indexOf('id'), 1))

@@ -41,7 +41,7 @@ export class SearchVis extends React.Component {
                         {column}
                         {column.includes('id') && (
                           <i className="material-icons">fingerprint</i>
-                        )}{' '}
+                        )}
                         {column.includes('Id') && (
                           <i className="material-icons">star</i>
                         )}
