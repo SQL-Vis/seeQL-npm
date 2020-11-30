@@ -5,8 +5,9 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import tables from './searchvis'
 import queryVis from './query'
+import result from './result'
 
-const reducer = combineReducers({user, tables, queryVis})
+const reducer = combineReducers({user, tables, queryVis, result})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

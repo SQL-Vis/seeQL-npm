@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchQueryVis} from '../store/query'
+import {fetchResult} from '../store/result'
 
 export class QueryInput extends React.Component {
   constructor() {
@@ -21,6 +22,7 @@ export class QueryInput extends React.Component {
   async handleSubmit(e) {
     e.preventDefault()
     await this.props.getQueryVis(this.state.query)
+    await this.props.getResult(this.state.query)
     this.setState({...this.state, lastSearch: this.state.query})
     this.setState({...this.state, query: ''})
   }
@@ -54,12 +56,16 @@ export class QueryInput extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  queryVis: state.queryVis
+  queryVis: state.queryVis,
+  result: state.result
 })
 
 const mapDispatchToProps = dispatch => ({
   getQueryVis: queryStr => {
     dispatch(fetchQueryVis(queryStr))
+  },
+  getResult: queryStr => {
+    dispatch(fetchResult(queryStr))
   }
 })
 

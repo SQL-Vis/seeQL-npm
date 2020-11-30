@@ -10,7 +10,7 @@ router.post('/', async (req, res, next) => {
     // console.log("REQ.BODY", req.body.query)
     const ast = parser.astify(req.body.query) // mysql sql grammer parsed by default
     //converting object from parser to object to send to our vis
-    console.log('AST: ', ast)
+    // console.log('AST: ', ast)
     const visInfo = {}
     visInfo[ast.type] = []
     //looping through parsed columns to get table name and column name
@@ -25,6 +25,7 @@ router.post('/', async (req, res, next) => {
       const idStr = tableName + columnName
       visInfo[ast.type].push(idStr)
     })
+
 
     /// Adding JOINs to visInfo Array
     visInfo.join = []
@@ -46,7 +47,22 @@ router.post('/', async (req, res, next) => {
     }
 
     console.log(visInfo)
+
     res.send(visInfo)
+  } catch (err) {
+    next(err)
+  }
+})
+
+//api/query/result
+router.post('/result', async (req, res, next) => {
+  try {
+    console.log('REQ.BODY', req.body.query)
+    const query = req.body.query
+    const split = query.split(' ')
+    const [results, metadata] = await db.query(query)
+    console.log(results)
+    res.send('hi')
   } catch (err) {
     next(err)
   }
