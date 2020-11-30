@@ -58,10 +58,12 @@ router.post('/result', async (req, res, next) => {
   try {
     console.log('REQ.BODY', req.body.query)
     const query = req.body.query
-    const split = query.split(' ')
+    // const split = query.split(' ')
     const [results, metadata] = await db.query(query)
-    console.log(results)
-    res.send('hi')
+    const columns = Object.keys(results[0])
+    const final = {columns: columns, rows: results}
+    console.log('FINAL: ', final)
+    res.send(final)
   } catch (err) {
     next(err)
   }

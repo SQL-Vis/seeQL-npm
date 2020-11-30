@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import SearchVis from './SearchVis'
 import QueryInput from './queryInput'
+import Result from './result'
 
 export class Main extends React.Component {
   async componentDidMount() {}
@@ -14,7 +15,7 @@ export class Main extends React.Component {
           <SearchVis />
         </div>
         <div className="resultBox">
-          <p>This is where the result will go</p>
+          <Result />
         </div>
       </div>
     )

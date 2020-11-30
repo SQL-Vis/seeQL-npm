@@ -62,3 +62,7 @@ td {
 .bold-title {
   font-weight: bold;
 }
+
+.result-table {
+  width: 100%;
+}

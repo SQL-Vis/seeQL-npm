@@ -28,6 +28,7 @@ export class QueryInput extends React.Component {
   }
 
   render() {
+    // console.log("PROPS ", this.props)
     return (
       <div>
         <form className="submit-form" onSubmit={this.handleSubmit}>

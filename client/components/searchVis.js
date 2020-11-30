@@ -10,7 +10,7 @@ export class SearchVis extends React.Component {
   }
   render() {
     const queryVis = this.props.queryVis || {}
-    console.log('ZEBRA', queryVis)
+    // console.log('ZEBRA', queryVis)
     return (
       <div className="table-container">
         {this.props.tables.map(table => {

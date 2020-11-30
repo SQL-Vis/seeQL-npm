@@ -6,3 +6,5 @@
 export {default as Navbar} from './navbar'
 export {default as Main} from './main'
 export {default as QueryInput} from './queryInput'
+export {default as Result} from './result'
+
