@@ -40,6 +40,13 @@ router.get('/models', async (req, res, next) => {
       },
       ['test']
     )
+    //redo with lodash
+    let songsArray = prettierArray.slice(1)[0].songs.sort()
+    songsArray.unshift(songsArray.splice(songsArray.indexOf('id'), 1))
+    let albumsArray = prettierArray.slice(1)[1].albums.sort()
+    albumsArray.unshift(albumsArray.splice(albumsArray.indexOf('id'), 1))
+    let artistsArray = prettierArray.slice(1)[2].artists.sort()
+    artistsArray.unshift(artistsArray.splice(artistsArray.indexOf('id'), 1))
     res.send(prettierArray.slice(1))
   } catch (err) {
     next(err)
