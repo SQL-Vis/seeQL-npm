@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import {connect} from 'react-redux'
 import {fetchTables} from '../store/searchvis'
+import Xarrow from 'react-xarrows'
 
 export class SearchVis extends React.Component {
+  // @Natalie Does the below actaully need to be async????
   async componentDidMount() {
     this.props.getModels()
   }
   render() {
     const queryVis = this.props.queryVis || {}
+    console.log('ZEBRA', queryVis)
     return (
       <div className="table-container">
         {this.props.tables.map(table => {
@@ -40,6 +43,19 @@ export class SearchVis extends React.Component {
             </table>
           )
         })}
+        {queryVis.join &&
+          queryVis.join.length > 0 &&
+          queryVis.join.map((joinObject, index) => {
+            return (
+              <Xarrow
+                key={index}
+                start={joinObject.left}
+                end={joinObject.right}
+                label={joinObject.type}
+                color="Teal"
+              />
+            )
+          })}
       </div>
     )
   }
