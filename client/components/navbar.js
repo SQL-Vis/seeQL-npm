@@ -7,7 +7,14 @@ import {logout} from '../store'
 const Navbar = ({handleClick, isLoggedIn}) => (
   <nav>
     <div className="nav-wrapper">
-      <a href="#">Logo</a>
+      <img
+        alt=""
+        href="#"
+        src="/diagram.svg"
+        width="30"
+        height="30"
+        className="d-inline-block align-top"
+      />
       <ul className="right hide-on-med-and-down">
         <li>
           <a href="">Instructions</a>
