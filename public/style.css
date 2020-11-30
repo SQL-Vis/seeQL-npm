@@ -36,7 +36,8 @@ td {
   border: solid 1px black;
 }
 
-.highlighted {
+.highlighted,
+#highlighted {
   background-color: pink;
 }
 

@@ -76,16 +76,12 @@ export class QueryInput extends React.Component {
                       key={search}
                       value={search}
                       onClick={this.handleSelect}
-                      className={`collection-item ${
+                      className="collection-item"
+                      id={
                         this.state.selectedVis === search
                           ? 'highlighted'
                           : 'notHighlighted'
-                      }`}
-                      // className={
-                      //   this.state.selectedVis === search
-                      //     ? 'highlighted'
-                      //     : 'notHighlighted'
-                      // }
+                      }
                     >
                       {search}
                     </li>
