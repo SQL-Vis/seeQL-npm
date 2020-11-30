@@ -39,3 +39,7 @@ td {
 .highlighted {
   background-color: pink;
 }
+
+.result-table {
+  width: 100%;
+}
