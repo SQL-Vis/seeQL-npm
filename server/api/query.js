@@ -26,7 +26,6 @@ router.post('/', async (req, res, next) => {
       visInfo[ast.type].push(idStr)
     })
 
-
     /// Adding JOINs to visInfo Array
     visInfo.join = []
 
