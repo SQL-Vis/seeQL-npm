@@ -39,3 +39,9 @@ td {
 .highlighted {
   background-color: pink;
 }
+
+.current-search {
+  border: 1px black solid;
+  padding: 5px;
+  width: 50%;
+}

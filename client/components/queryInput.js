@@ -8,10 +8,12 @@ export class QueryInput extends React.Component {
     super()
     this.state = {
       query: '',
-      lastSearch: ''
+      lastSearches: [],
+      selectedVis: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   handleChange(e) {
@@ -23,33 +25,82 @@ export class QueryInput extends React.Component {
     e.preventDefault()
     await this.props.getQueryVis(this.state.query)
     await this.props.getResult(this.state.query)
-    this.setState({...this.state, lastSearch: this.state.query})
+    this.setState({
+      ...this.state,
+      lastSearches: [...this.state.lastSearches, this.state.query],
+      selectedVis: this.state.query
+    })
     this.setState({...this.state, query: ''})
   }
 
+  async handleSelect(e) {
+    await this.setState({
+      ...this.state,
+      selectedVis: e.target.getAttribute('value')
+    })
+    this.props.getQueryVis(this.state.selectedVis)
+  }
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="input-field">
-            <input
-              value={this.state.query}
-              type="text"
-              onChange={this.handleChange}
-              placeholder="Query"
-            />
-            {/* <label>Query</label> */}
-            <button
-              className="btn waves-effect waves-light"
-              type="submit"
-              name="action"
-            >
-              Submit
-              <i className="material-icons right">send</i>
-            </button>
+        <div className="row">
+          <div className="col s6">
+            <form onSubmit={this.handleSubmit}>
+              <div className="input-field">
+                <textarea
+                  value={this.state.query}
+                  type="text"
+                  onChange={this.handleChange}
+                  placeholder="Query"
+                  id="textarea1"
+                  className="materialize-textarea"
+                />
+                <button
+                  className="btn waves-effect waves-light"
+                  type="submit"
+                  name="action"
+                >
+                  Submit
+                  <i className="material-icons right">send</i>
+                </button>
+              </div>
+            </form>
+            {/* <div>{this.state.lastSearches}</div> */}
           </div>
-        </form>
-        <div>{this.state.lastSearch}</div>
+          <div className="col s6">
+            <label>Query History</label>
+            <ul className="collection">
+              {this.state.lastSearches &&
+                this.state.lastSearches.map(search => {
+                  console.log(this.state.selectedVis === search)
+                  return (
+                    <li
+                      key={search}
+                      value={search}
+                      onClick={this.handleSelect}
+                      className={`collection-item ${
+                        this.state.selectedVis === search
+                          ? 'highlighted'
+                          : 'notHighlighted'
+                      }`}
+                      // className={
+                      //   this.state.selectedVis === search
+                      //     ? 'highlighted'
+                      //     : 'notHighlighted'
+                      // }
+                    >
+                      {search}
+                    </li>
+                  )
+                })}
+            </ul>
+          </div>
+        </div>
+        <div className="row">
+          <div className="current-search">
+            <p>Current search:{this.state.selectedVis} </p>
+          </div>
+        </div>
       </div>
     )
   }
@@ -66,6 +117,9 @@ const mapDispatchToProps = dispatch => ({
   },
   getResult: queryStr => {
     dispatch(fetchResult(queryStr))
+  },
+  selectQueryVis: queryStr => {
+    dispatch(selectQueryVis(queryStr))
   }
 })
 

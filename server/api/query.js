@@ -26,7 +26,6 @@ router.post('/', async (req, res, next) => {
       visInfo[ast.type].push(idStr)
     })
 
-
     /// Adding JOINs to visInfo Array
     visInfo.join = []
 
@@ -59,9 +58,10 @@ router.post('/result', async (req, res, next) => {
   try {
     console.log('REQ.BODY', req.body.query)
     const query = req.body.query
-    const split = query.split(' ')
-    const [results, metadata] = await db.query(query)
-    console.log(results)
+    // const split = query.split(' ')
+    console.log(('query', query))
+    // const [results, metadata] = await db.query(query)
+    // console.log(results)
     res.send('hi')
   } catch (err) {
     next(err)
