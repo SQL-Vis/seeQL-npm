@@ -55,7 +55,8 @@ td {
   border-radius: 10px;
 }
 
-.highlighted {
+
+.highlighted, #highlighted {
   background-color: #e0f2f1;
 }
 
@@ -65,4 +66,8 @@ td {
 
 .result-table {
   width: 100%;
+}
+
+.collection-item:hover {
+  cursor: pointer;
 }
