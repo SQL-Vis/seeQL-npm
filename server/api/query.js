@@ -7,7 +7,7 @@ const db = require('../db')
 //api/query
 router.post('/', async (req, res, next) => {
   try {
-    // console.log("REQ.BODY", req.body.query)
+    console.log('REQ.BODY', req.body)
     const ast = parser.astify(req.body.query) // mysql sql grammer parsed by default
     //converting object from parser to object to send to our vis
     // console.log('AST: ', ast)
@@ -32,7 +32,6 @@ router.post('/', async (req, res, next) => {
     if (ast.from) {
       let fromArray = ast.from
       for (let i = 0; i < fromArray.length; i++) {
-        console.log('hi')
         if (fromArray[i].join) {
           let joinSource = fromArray[i]
           let joinObject = {
@@ -58,11 +57,10 @@ router.post('/result', async (req, res, next) => {
   try {
     console.log('REQ.BODY', req.body.query)
     const query = req.body.query
-    // const split = query.split(' ')
     const [results, metadata] = await db.query(query)
+    console.log('RESULT: ', results)
     const columns = Object.keys(results[0])
     const final = {columns: columns, rows: results}
-    console.log('FINAL: ', final)
     res.send(final)
   } catch (err) {
     next(err)
