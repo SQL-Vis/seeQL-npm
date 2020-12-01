@@ -11,48 +11,74 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 
+import {DataGrid} from '@material-ui/data-grid'
+
 export class Result extends React.Component {
-  async componentDidMount() {
-    // this.props.getResult()
-  }
   render() {
     const result = this.props.result || {}
     console.log('RESULT', result)
+    let columns
+    let rows
+    if (result.columns) {
+      columns = result.columns.map(column => {
+        return {
+          field: column,
+          headerName: column,
+          width: 250,
+          cellClassName: 'result-row'
+        }
+      })
+      rows = result.rows.map((row, index) => {
+        return {id: index, ...row}
+      })
+    }
     return (
-      <TableContainer component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              {result.columns &&
-                result.columns.map((column, index) => {
-                  return (
-                    <TableCell align="left" key={index}>
-                      {column}
-                    </TableCell>
-                  )
-                })}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {result.rows &&
-              result.rows.map((row, index) => {
-                return (
-                  <TableRow key={index}>
-                    {result.columns.map((column, index) => {
-                      return <TableCell key={index}>{row[column]}</TableCell>
-                    })}
-                  </TableRow>
-                )
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <div style={{height: 400, width: '100%'}}>
+        {result.columns && (
+          <DataGrid
+            className="result-body"
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            hideFooterSelectedRowCount="true"
+          />
+        )}
+      </div>
 
-      // <table>
+      // <TableContainer component={Paper}>
+      //   <Table aria-label="simple table">
+      //     <TableHead>
+      //       <TableRow>
+      //         {result.columns &&
+      //           result.columns.map((column, index) => {
+      //             return (
+      //               <TableCell align="left" key={index}>
+      //                 {column}
+      //               </TableCell>
+      //             )
+      //           })}
+      //       </TableRow>
+      //     </TableHead>
+      //     <TableBody>
+      //       {result.rows &&
+      //         result.rows.map((row, index) => {
+      //           return (
+      //             <TableRow key={index}>
+      //               {result.columns.map((column, index) => {
+      //                 return <TableCell key={index}>{row[column]}</TableCell>
+      //               })}
+      //             </TableRow>
+      //           )
+      //         })}
+      //     </TableBody>
+      //   </Table>
+      // </TableContainer>
+
+      // <table className="result-body">
       //   <thead>
       //     <tr>
       //     {result.columns && result.columns.map((column, index) => {
-      //         return <td key={index}>{column}</td>
+      //         return <td key={index} className="table-title">{column}</td>
       //     })}
       //     </tr>
       //   </thead>
