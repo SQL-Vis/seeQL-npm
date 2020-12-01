@@ -55,8 +55,8 @@ td {
   border-radius: 10px;
 }
 
-
-.highlighted, #highlighted {
+.highlighted,
+#highlighted {
   background-color: #e0f2f1;
 }
 
@@ -70,4 +70,12 @@ td {
 
 .collection-item:hover {
   cursor: pointer;
+}
+
+.result-body {
+  background-color: #e0f2f1;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin: 20px;
+  padding: 5px;
 }
