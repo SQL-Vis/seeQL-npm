@@ -49,6 +49,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.1",
     "history": "^4.9.0",
+    "jsdom": "^16.4.0",
     "lodash": "^4.17.20",
     "material-table": "^1.69.2",
     "morgan": "^1.9.1",
@@ -66,7 +67,9 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "sequelize": "^5.3.1"
+    "sequelize": "^5.3.1",
+    "sinon": "^9.2.1",
+    "wait-for-expect": "^3.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",

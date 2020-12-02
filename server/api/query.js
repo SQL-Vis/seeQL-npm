@@ -7,31 +7,36 @@ const db = require('../db')
 //api/query
 router.post('/', async (req, res, next) => {
   try {
-    // console.log("REQ.BODY", req.body.query)
+    console.log('REQ.BODY', req.body)
     const ast = parser.astify(req.body.query) // mysql sql grammer parsed by default
     //converting object from parser to object to send to our vis
-    // console.log('AST: ', ast)
-    const visInfo = {}
+    const visInfo = {all: [], join: []}
     visInfo[ast.type] = []
+    if (ast.columns === '*') {
+      ast.from.forEach(el => {
+        visInfo.all.push(el.table)
+      })
+    }
     //looping through parsed columns to get table name and column name
-    ast.columns.forEach(column => {
-      const columnName = column.expr.column
-      let tableName = column.expr.table
-      //if there is no join, get the table name from the 'from' on the parsed object (because table name is null on column)
-      if (!tableName) {
-        tableName = ast.from[0].table
-      }
-      //convert tableName and columnName into one string to send back to front end to use as id for highlighting
-      const idStr = tableName + columnName
-      visInfo[ast.type].push(idStr)
-    })
+    if (Array.isArray(ast.columns)) {
+      ast.columns.forEach(column => {
+        const columnName = column.expr.column
+        let tableName = column.expr.table
+        //if there is no join, get the table name from the 'from' on the parsed object (because table name is null on column)
+        if (!tableName) {
+          tableName = ast.from[0].table
+        }
+        //convert tableName and columnName into one string to send back to front end to use as id for highlighting
+        const idStr = tableName + columnName
+        visInfo[ast.type].push(idStr)
+      })
+    }
 
     /// Adding JOINs to visInfo Array
     visInfo.join = []
     if (ast.from) {
       let fromArray = ast.from
       for (let i = 0; i < fromArray.length; i++) {
-        console.log('hi')
         if (fromArray[i].join) {
           let joinSource = fromArray[i]
           let joinObject = {
@@ -43,10 +48,6 @@ router.post('/', async (req, res, next) => {
         }
       }
     }
-
-    /// WHERE searches
-
-    console.log(visInfo)
     res.send(visInfo)
   } catch (err) {
     next(err)
@@ -56,13 +57,10 @@ router.post('/', async (req, res, next) => {
 //api/query/result
 router.post('/result', async (req, res, next) => {
   try {
-    console.log('REQ.BODY', req.body.query)
     const query = req.body.query
-    // const split = query.split(' ')
     const [results, metadata] = await db.query(query)
     const columns = Object.keys(results[0])
     const final = {columns: columns, rows: results}
-    console.log('FINAL: ', final)
     res.send(final)
   } catch (err) {
     next(err)

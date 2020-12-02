@@ -8,3 +8,5 @@ export {default as Main} from './main'
 export {default as QueryInput} from './queryInput'
 export {default as Result} from './result'
 export {default as Walkthrough} from './walkthrough'
+export {default as Key} from './key'
+

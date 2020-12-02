@@ -20,29 +20,27 @@ export class QueryInput extends React.Component {
     this.setState({query: e.target.value})
   }
 
-  //@Natalie - does this need to be async? NO -- if you needed async at to thunk
-  async handleSubmit(e) {
+  handleSubmit(e) {
     e.preventDefault()
-    await this.props.getQueryVis(this.state.query)
-    await this.props.getResult(this.state.query)
-    // COMBINE BELOW
+    this.props.getQueryVis(this.state.query)
+    this.props.getResult(this.state.query)
     this.setState({
       ...this.state,
       lastSearches: [...this.state.lastSearches, this.state.query],
-      selectedVis: this.state.query
+      selectedVis: this.state.query,
+      query: ''
     })
-    this.setState({...this.state, query: ''})
   }
 
-  async handleSelect(e) {
-    await this.setState({
+  handleSelect(e) {
+    this.setState({
       ...this.state,
       selectedVis: e.target.getAttribute('value')
     })
-    this.props.getQueryVis(this.state.selectedVis) // use e.target or callback instead
+    this.props.getQueryVis(e.target.getAttribute('value'))
+    this.props.getResult(e.target.getAttribute('value'))
   }
   render() {
-    // console.log("PROPS ", this.props)
     return (
       <div>
         <div className="row">
@@ -115,9 +113,6 @@ const mapDispatchToProps = dispatch => ({
   },
   getResult: queryStr => {
     dispatch(fetchResult(queryStr))
-  },
-  selectQueryVis: queryStr => {
-    dispatch(selectQueryVis(queryStr))
   }
 })
 

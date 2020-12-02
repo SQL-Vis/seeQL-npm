@@ -4,13 +4,11 @@ import {fetchTables} from '../store/searchvis'
 import Xarrow from 'react-xarrows'
 
 export class SearchVis extends React.Component {
-  // @Natalie Does the below actaully need to be async????
-  async componentDidMount() {
+  componentDidMount() {
     this.props.getModels()
   }
   render() {
     const queryVis = this.props.queryVis || {}
-    // console.log('ZEBRA', queryVis)
     return (
       <div className="table-container">
         {this.props.tables.map(table => {
@@ -22,7 +20,13 @@ export class SearchVis extends React.Component {
                   <th className="table-title">{tableName}</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody
+                className={
+                  queryVis.all && queryVis.all.includes(tableName)
+                    ? 'highlighted'
+                    : 'notHighlighted'
+                }
+              >
                 {table[tableName].map(column => {
                   return (
                     <tr
