@@ -11,20 +11,27 @@ router.post('/', async (req, res, next) => {
     const ast = parser.astify(req.body.query) // mysql sql grammer parsed by default
     //converting object from parser to object to send to our vis
     // console.log('AST: ', ast)
-    const visInfo = {}
+    const visInfo = {all: [], join: []}
     visInfo[ast.type] = []
+    if (ast.columns === '*') {
+      ast.from.forEach(el => {
+        visInfo.all.push(el.table)
+      })
+    }
     //looping through parsed columns to get table name and column name
-    ast.columns.forEach(column => {
-      const columnName = column.expr.column
-      let tableName = column.expr.table
-      //if there is no join, get the table name from the 'from' on the parsed object (because table name is null on column)
-      if (!tableName) {
-        tableName = ast.from[0].table
-      }
-      //convert tableName and columnName into one string to send back to front end to use as id for highlighting
-      const idStr = tableName + columnName
-      visInfo[ast.type].push(idStr)
-    })
+    if (Array.isArray(ast.columns)) {
+      ast.columns.forEach(column => {
+        const columnName = column.expr.column
+        let tableName = column.expr.table
+        //if there is no join, get the table name from the 'from' on the parsed object (because table name is null on column)
+        if (!tableName) {
+          tableName = ast.from[0].table
+        }
+        //convert tableName and columnName into one string to send back to front end to use as id for highlighting
+        const idStr = tableName + columnName
+        visInfo[ast.type].push(idStr)
+      })
+    }
 
     /// Adding JOINs to visInfo Array
     visInfo.join = []
@@ -44,7 +51,7 @@ router.post('/', async (req, res, next) => {
       }
     }
 
-    console.log(visInfo)
+    console.log('VIS:', visInfo)
 
     res.send(visInfo)
   } catch (err) {
@@ -58,7 +65,7 @@ router.post('/result', async (req, res, next) => {
     console.log('REQ.BODY', req.body.query)
     const query = req.body.query
     const [results, metadata] = await db.query(query)
-    console.log('RESULT: ', results)
+    // console.log('RESULT: ', results)
     const columns = Object.keys(results[0])
     const final = {columns: columns, rows: results}
     res.send(final)
