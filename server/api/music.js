@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
     // )
     // mysql sql grammer parsed by default
     const ast = parser.astify(
-      'select songs.title, artists.age from songs right join artists on songs."artistId" = artists.id where artists.age > 28 and artists.age < 35'
+      'select songs.title, songs.length, artists.age from songs right join artists on songs."artistId" = artists.id where artists.age > 28 and artists.age < 35 and songs.length < 250'
     ) // mysql sql grammer parsed by default
     console.log(ast)
     res.send(ast)

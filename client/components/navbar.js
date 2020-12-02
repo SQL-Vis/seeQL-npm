@@ -1,37 +1,19 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
-const Navbar = ({handleClick, isLoggedIn}) => (
+const Navbar = () => (
   <nav className="navbar-material teal lighten-1">
     <div className="nav-wrapper">
-      <a href="#" className="brand-logo">
-        <img alt="" src="/diagram.svg" width="30" height="30" /> SQL-VIS
-      </a>
+      <Link to="/" className="brand-logo">
+        <img alt="" src="/diagram.svg" width="30" height="30" /> seeQL
+      </Link>
       <ul className="right hide-on-med-and-down">
         <li>
-          <a href="">Instructions</a>
+          <Link to="/walkthrough">Walkthrough</Link>
         </li>
       </ul>
     </div>
   </nav>
 )
 
-/**
- * CONTAINER
- */
-const mapState = state => {
-  // return {
-  //   isLoggedIn: !!state.user.id
-  // }
-}
-
-const mapDispatch = dispatch => {
-  return {
-    // handleClick() {
-    //   dispatch(logout())
-    // }
-  }
-}
-
-export default connect(mapState, mapDispatch)(Navbar)
+export default Navbar

@@ -20,11 +20,12 @@ export class QueryInput extends React.Component {
     this.setState({query: e.target.value})
   }
 
-  //@Natalie - does this need to be async?
+  //@Natalie - does this need to be async? NO -- if you needed async at to thunk
   async handleSubmit(e) {
     e.preventDefault()
     await this.props.getQueryVis(this.state.query)
     await this.props.getResult(this.state.query)
+    // COMBINE BELOW
     this.setState({
       ...this.state,
       lastSearches: [...this.state.lastSearches, this.state.query],
@@ -38,7 +39,7 @@ export class QueryInput extends React.Component {
       ...this.state,
       selectedVis: e.target.getAttribute('value')
     })
-    this.props.getQueryVis(this.state.selectedVis)
+    this.props.getQueryVis(this.state.selectedVis) // use e.target or callback instead
   }
   render() {
     // console.log("PROPS ", this.props)
