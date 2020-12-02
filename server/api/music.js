@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
     // )
     // mysql sql grammer parsed by default
     const ast = parser.astify('select * from songs, artists') // mysql sql grammer parsed by default
-    console.log(ast)
+
     res.send(ast)
   } catch (err) {
     next(err)
