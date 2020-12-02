@@ -10,12 +10,29 @@ router.post('/', async (req, res, next) => {
     console.log('REQ.BODY', req.body)
     const ast = parser.astify(req.body.query) // mysql sql grammer parsed by default
     //converting object from parser to object to send to our vis
-    const visInfo = {all: [], join: []}
+    const visInfo = {all: [], join: [], orderby: {ASC: [], DESC: []}}
     visInfo[ast.type] = []
     if (ast.columns === '*') {
       ast.from.forEach(el => {
         visInfo.all.push(el.table)
       })
+    }
+    //orderBy: [{dir: 'asc', id: 'songstitle'}]
+    if (ast.orderby) {
+      // let res= ast.orderBy.map((elem)=>( {
+      //   id: elem.expr.column,
+      //   dir: elem.type
+      // }))
+      for (let i = 0; i < ast.orderby.length; i++) {
+        const elem = ast.orderby[i]
+        if (elem.expr.table) {
+          visInfo.orderby[elem.type].push(elem.expr.table + elem.expr.column)
+          // visInfo.orderby.push({
+          //   dir: elem.type,
+          //   id: elem.expr.table + elem.expr.column,
+          // })
+        }
+      }
     }
     //looping through parsed columns to get table name and column name
     if (Array.isArray(ast.columns)) {
