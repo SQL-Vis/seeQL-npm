@@ -1,7 +1,7 @@
 {
   "name": "SQL-Vis",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "SEE a visualization of your SQL queries",
   "engines": {
     "node": "~12.11.1"
   },

@@ -29,7 +29,7 @@ export class Result extends React.Component {
             className="result-body"
             rows={rows}
             columns={columns}
-            pageSize={5}
+            //pageSize={5}
             hideFooterSelectedRowCount="true"
           />
         )}

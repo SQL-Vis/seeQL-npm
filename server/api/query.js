@@ -34,7 +34,6 @@ router.post('/', async (req, res, next) => {
 
     /// Adding JOINs to visInfo Array
     visInfo.join = []
-
     if (ast.from) {
       let fromArray = ast.from
       for (let i = 0; i < fromArray.length; i++) {
@@ -49,7 +48,6 @@ router.post('/', async (req, res, next) => {
         }
       }
     }
-
     res.send(visInfo)
   } catch (err) {
     next(err)
