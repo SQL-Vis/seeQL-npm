@@ -2,6 +2,7 @@ const router = require('express').Router()
 module.exports = router
 const {Parser} = require('node-sql-parser')
 const parser = new Parser()
+const {formatTablesColumns} = require('./parserHelper')
 const db = require('../db')
 var _ = require('lodash')
 
@@ -27,25 +28,7 @@ router.get('/models', async (req, res, next) => {
       "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema='public'"
     )
     //redid with lodash
-    let prettierArray = _.reduce(
-      results,
-      function(result, value) {
-        let tableName = value.table_name
-        let columnName = value.column_name
-        let exists = _.find(result, function(o) {
-          return o[tableName]
-        })
-        if (exists) {
-          exists[tableName].push(columnName)
-        } else {
-          let obj = {}
-          obj[tableName] = [columnName]
-          result.push(obj)
-        }
-        return result
-      },
-      []
-    )
+    let prettierArray = formatTablesColumns(results)
 
     //original script
     // let prettierArray = results.reduce(

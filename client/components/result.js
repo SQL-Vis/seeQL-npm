@@ -14,6 +14,7 @@ export class Result extends React.Component {
         return {
           field: column,
           headerName: column,
+          headerClassName: 'result-header',
           width: 250,
           cellClassName: 'result-row'
         }

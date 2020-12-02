@@ -1,7 +1,14 @@
+:root {
+  --background: #ffeca1;
+  --tableHeader: #ffb05f;
+  --highlighted: #e0f2f1;
+  --offWhite: #fffef7;
+  --teal: #26a69a;
+}
+
 body {
   font-family: sans-serif;
-  background-color: #ffeca1;
-  /* background-color: #fffce3 */
+  background-color: var(--background);
 }
 
 a {
@@ -28,13 +35,13 @@ form div {
 }
 
 td {
-  border-top: solid 1px grey;
+  border-top: solid 0.8px lightgrey;
 }
 
 .vis-table {
   margin: 20px;
   padding: 5px;
-  background-color: #fffef7;
+  background-color: var(--offWhite);
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
@@ -43,7 +50,7 @@ td {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   text-align: center;
-  background-color: #ffb05f;
+  background-color: var(--tableHeader);
   /* #b2dfdb */
 }
 
@@ -57,7 +64,7 @@ td {
 
 .highlighted,
 #highlighted {
-  background-color: #e0f2f1;
+  background-color: var(--highlighted);
 }
 
 .bold-title {
@@ -73,13 +80,16 @@ td {
 }
 
 .result-body {
-  background-color: #e0f2f1;
+  background-color: var(--offWhite);
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   margin: 20px;
   padding: 5px;
 }
 
+.result-header {
+  background-color: var(--highlighted);
+}
 /* .queryVisBox{
 
 } */
