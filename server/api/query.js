@@ -10,7 +10,6 @@ router.post('/', async (req, res, next) => {
     console.log('REQ.BODY', req.body)
     const ast = parser.astify(req.body.query) // mysql sql grammer parsed by default
     //converting object from parser to object to send to our vis
-    // console.log('AST: ', ast)
     const visInfo = {all: [], join: []}
     visInfo[ast.type] = []
     if (ast.columns === '*') {
@@ -51,8 +50,6 @@ router.post('/', async (req, res, next) => {
       }
     }
 
-    console.log('VIS:', visInfo)
-
     res.send(visInfo)
   } catch (err) {
     next(err)
@@ -62,10 +59,8 @@ router.post('/', async (req, res, next) => {
 //api/query/result
 router.post('/result', async (req, res, next) => {
   try {
-    console.log('REQ.BODY', req.body.query)
     const query = req.body.query
     const [results, metadata] = await db.query(query)
-    // console.log('RESULT: ', results)
     const columns = Object.keys(results[0])
     const final = {columns: columns, rows: results}
     res.send(final)
