@@ -52,6 +52,14 @@ export class SearchVis extends React.Component {
                         {column.includes('Id') && (
                           <i className="material-icons">star</i>
                         )}
+                        {queryVis.orderby &&
+                          queryVis.orderby.ASC.includes(tableName + column) && (
+                            <i className="material-icons">arrow_upward</i>
+                          )}
+                        {queryVis.orderby &&
+                          queryVis.orderby.DESC.includes(
+                            tableName + column
+                          ) && <i className="material-icons">arrow_downward</i>}
                       </td>
                     </tr>
                   )
