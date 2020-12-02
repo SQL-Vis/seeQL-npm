@@ -22,7 +22,13 @@ export class SearchVis extends React.Component {
                   <th className="table-title">{tableName}</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody
+                className={
+                  queryVis.all && queryVis.all.includes(tableName)
+                    ? 'highlighted'
+                    : 'notHighlighted'
+                }
+              >
                 {table[tableName].map(column => {
                   return (
                     <tr
