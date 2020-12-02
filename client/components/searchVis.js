@@ -4,7 +4,7 @@ import {fetchTables} from '../store/searchvis'
 import Xarrow from 'react-xarrows'
 
 export class SearchVis extends React.Component {
-  // @Natalie Does the below actaully need to be async????
+  // @Natalie Does the below actually need to be async????
   async componentDidMount() {
     this.props.getModels()
   }
