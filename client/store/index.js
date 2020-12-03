@@ -6,8 +6,9 @@ import tables from './searchvis'
 import queryVis from './query'
 import result from './result'
 import error from './error'
+import searches from './searches'
 
-const reducer = combineReducers({tables, queryVis, result, error})
+const reducer = combineReducers({tables, queryVis, result, error, searches})
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )

@@ -1,7 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchQueryVis} from '../store/query'
-import {fetchResult} from '../store/result'
 
 export class CurrentSearch extends React.Component {
   render() {
@@ -9,7 +7,7 @@ export class CurrentSearch extends React.Component {
       <div className="row">
         <div className="card ">
           <div className="card-content ">
-            Current search: {this.props.queryVis}
+            Current search: {this.props.searches.currentSearch}
           </div>
         </div>
       </div>
@@ -18,17 +16,7 @@ export class CurrentSearch extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  queryVis: state.queryVis,
-  result: state.result
+  searches: state.searches
 })
 
-const mapDispatchToProps = dispatch => ({
-  getQueryVis: queryStr => {
-    dispatch(fetchQueryVis(queryStr))
-  },
-  getResult: queryStr => {
-    dispatch(fetchResult(queryStr))
-  }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(CurrentSearch)
+export default connect(mapStateToProps)(CurrentSearch)

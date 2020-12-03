@@ -2,18 +2,16 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchQueryVis} from '../store/query'
 import {fetchResult} from '../store/result'
+import {getCurrentSearch, getLastSearches} from '../store/searches'
 
 export class QueryInput extends React.Component {
   constructor() {
     super()
     this.state = {
-      query: '',
-      lastSearches: [],
-      selectedVis: ''
+      query: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleSelect = this.handleSelect.bind(this)
   }
 
   handleChange(e) {
@@ -24,88 +22,42 @@ export class QueryInput extends React.Component {
     e.preventDefault()
     this.props.getQueryVis(this.state.query)
     this.props.getResult(this.state.query)
-    this.setState({
-      ...this.state,
-      lastSearches: [...this.state.lastSearches, this.state.query],
-      selectedVis: this.state.query,
-      query: ''
-    })
+    this.props.setCurrentSearch(this.state.query)
+    this.props.setLastSearches(this.state.query)
+    this.setState({...this.state, query: ''})
   }
 
-  handleSelect(e) {
-    this.setState({
-      ...this.state,
-      selectedVis: e.target.getAttribute('value')
-    })
-    this.props.getQueryVis(e.target.getAttribute('value'))
-    this.props.getResult(e.target.getAttribute('value'))
-  }
   render() {
-    console.log('PROPS ', !!this.props.error)
     return (
       <div>
-        <div className="row">
-          <div className="col s6">
-            <form onSubmit={this.handleSubmit}>
-              <div className="input-field">
-                <textarea
-                  value={this.state.query}
-                  type="text"
-                  onChange={this.handleChange}
-                  placeholder="Query"
-                  id="textarea1"
-                  className="materialize-textarea"
-                />
-                <button
-                  className="btn waves-effect waves-light"
-                  type="submit"
-                  name="action"
-                >
-                  Submit
-                  <i className="material-icons right">send</i>
-                </button>
-                {this.props.error.parser || this.props.error.database ? (
-                  <p>
-                    {this.props.error.parser.error ||
-                      this.props.error.database.error}
-                  </p>
-                ) : (
-                  <p />
-                )}
-              </div>
-            </form>
+        <form onSubmit={this.handleSubmit}>
+          <div className="input-field">
+            <textarea
+              value={this.state.query}
+              type="text"
+              onChange={this.handleChange}
+              placeholder="Query"
+              id="textarea1"
+              className="materialize-textarea"
+            />
+            <button
+              className="btn waves-effect waves-light"
+              type="submit"
+              name="action"
+            >
+              Submit
+              <i className="material-icons right">send</i>
+            </button>
+            {this.props.error.parser || this.props.error.database ? (
+              <p>
+                {this.props.error.parser.error ||
+                  this.props.error.database.error}
+              </p>
+            ) : (
+              <p />
+            )}
           </div>
-          <div className="col s6">
-            <label>Query History</label>
-            <ul className="collection">
-              {this.state.lastSearches &&
-                this.state.lastSearches.map(search => {
-                  return (
-                    <li
-                      key={search}
-                      value={search}
-                      onClick={this.handleSelect}
-                      className="collection-item"
-                      id={
-                        this.state.selectedVis === search
-                          ? 'highlighted'
-                          : 'notHighlighted'
-                      }
-                    >
-                      {search}
-                    </li>
-                  )
-                })}
-            </ul>
-          </div>
-        </div>
-        <div className="row">
-          <div className="card ">
-            <div className="card-content ">
-              Current search: {this.state.selectedVis}
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
     )
   }
@@ -114,7 +66,8 @@ export class QueryInput extends React.Component {
 const mapStateToProps = state => ({
   queryVis: state.queryVis,
   result: state.result,
-  error: state.error
+  error: state.error,
+  searches: state.searches
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -123,6 +76,12 @@ const mapDispatchToProps = dispatch => ({
   },
   getResult: queryStr => {
     dispatch(fetchResult(queryStr))
+  },
+  setCurrentSearch: currentSearch => {
+    dispatch(getCurrentSearch(currentSearch))
+  },
+  setLastSearches: lastSearch => {
+    dispatch(getLastSearches(lastSearch))
   }
 })
 
