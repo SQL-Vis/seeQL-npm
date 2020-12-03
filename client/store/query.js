@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {getParserError} from './error'
 
 /**
  * ACTION TYPES
@@ -25,11 +26,17 @@ export const fetchQueryVis = queryStr => async dispatch => {
   try {
     const {data} = await axios.post('/api/query', {query: queryStr})
     dispatch(getQueryVis(data))
+    dispatch(getParserError({}))
   } catch (err) {
     if (err.response.status === 422) {
-      dispatch(setQueryError(err.response.data)) //FINISH HERE
+      dispatch(getParserError(err.response.data)) //FINISH HERE
     } else {
       console.error(err)
+      dispatch(
+        getParserError({
+          error: 'Sorry, there was an error in your query. Try again.'
+        })
+      )
     }
   }
 }

@@ -14,9 +14,9 @@ const {
 //api/query
 router.post('/', async (req, res, next) => {
   try {
-    console.log('REQ.BODY', req.body)
     const ast = parser.astify(req.body.query) // mysql sql grammer parsed by default
     //converting object from parser to object to send to our vis
+
     const visInfo = {
       select: [],
       all: [],
@@ -36,23 +36,13 @@ router.post('/', async (req, res, next) => {
 
     let errorMessage
     if (ast.orderby) {
-      // try {
-      //   const status = getOrderBy(ast, visInfo, tableArray)
-      // } catch(e) {
-      //   if (e.message == 'Duplicate Column Name') {
-      //     res.send(422)
-      //     res.send({ message: e.message });
-      //   }
-      // }
       const status = getOrderBy(ast, visInfo, tableArray)
       if (status === 'duplicate') {
-        // throw new Error('column name too vague; specify table')
-        errorMessage = 'column name too vague; specify table'
+        errorMessage = 'Column name too vague; specify table.'
         next()
       }
       if (status === 'none') {
-        // throw new Error('column does not exist')
-        errorMessage = 'column does not exist'
+        errorMessage = 'Column does not exist.'
         return
       }
     }
@@ -63,7 +53,7 @@ router.post('/', async (req, res, next) => {
 
     if (errorMessage) {
       res.status(422)
-      res.send({errorMessage})
+      res.send({error: errorMessage})
     } else {
       res.send(visInfo)
     }
@@ -81,6 +71,6 @@ router.post('/result', async (req, res, next) => {
     const final = {columns: columns, rows: results}
     res.send(final)
   } catch (err) {
-    next(err)
+    res.status(422).send({error: 'Sorry, this is not a valid query.'})
   }
 })

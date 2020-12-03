@@ -41,6 +41,7 @@ export class QueryInput extends React.Component {
     this.props.getResult(e.target.getAttribute('value'))
   }
   render() {
+    console.log('PROPS ', !!this.props.error)
     return (
       <div>
         <div className="row">
@@ -63,6 +64,14 @@ export class QueryInput extends React.Component {
                   Submit
                   <i className="material-icons right">send</i>
                 </button>
+                {this.props.error.parser || this.props.error.database ? (
+                  <p>
+                    {this.props.error.parser.error ||
+                      this.props.error.database.error}
+                  </p>
+                ) : (
+                  <p />
+                )}
               </div>
             </form>
           </div>
@@ -104,7 +113,8 @@ export class QueryInput extends React.Component {
 
 const mapStateToProps = state => ({
   queryVis: state.queryVis,
-  result: state.result
+  result: state.result,
+  error: state.error
 })
 
 const mapDispatchToProps = dispatch => ({

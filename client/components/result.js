@@ -25,22 +25,24 @@ export class Result extends React.Component {
     }
     return (
       <div style={{height: 400, width: '100%'}}>
-        {result.columns && (
-          <DataGrid
-            className="result-body"
-            rows={rows}
-            columns={columns}
-            //pageSize={5}
-            hideFooterSelectedRowCount="true"
-          />
-        )}
+        {result.columns &&
+          !this.props.error.error && (
+            <DataGrid
+              className="result-body"
+              rows={rows}
+              columns={columns}
+              //pageSize={5}
+              hideFooterSelectedRowCount="true"
+            />
+          )}
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  result: state.result
+  result: state.result,
+  error: state.error
 })
 
 const mapDispatchToProps = dispatch => ({
