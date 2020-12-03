@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {getDatabaseError} from './error'
 
 /**
  * ACTION TYPES
@@ -24,8 +25,18 @@ export const fetchResult = queryStr => async dispatch => {
   try {
     const {data} = await axios.post('/api/query/result', {query: queryStr})
     dispatch(getResult(data))
+    dispatch(getDatabaseError({}))
   } catch (err) {
-    console.error(err)
+    if (err.response.status === 422) {
+      dispatch(getDatabaseError(err.response.data)) //FINISH HERE
+    } else {
+      console.error(err)
+      dispatch(
+        getInputError({
+          error: 'Sorry, there was an error in your query. Try again.'
+        })
+      )
+    }
   }
 }
 

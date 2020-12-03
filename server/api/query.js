@@ -38,11 +38,11 @@ router.post('/', async (req, res, next) => {
     if (ast.orderby) {
       const status = getOrderBy(ast, visInfo, tableArray)
       if (status === 'duplicate') {
-        errorMessage = 'column name too vague; specify table'
+        errorMessage = 'Column name too vague; specify table.'
         next()
       }
       if (status === 'none') {
-        errorMessage = 'column does not exist'
+        errorMessage = 'Column does not exist.'
         return
       }
     }
@@ -71,6 +71,6 @@ router.post('/result', async (req, res, next) => {
     const final = {columns: columns, rows: results}
     res.send(final)
   } catch (err) {
-    next(err)
+    res.status(422).send({error: 'Sorry, this is not a valid query.'})
   }
 })
