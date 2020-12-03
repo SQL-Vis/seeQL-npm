@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import KeyMenu from './keyMenu'
 
 const Navbar = () => (
   <nav className="navbar-material teal lighten-1">
