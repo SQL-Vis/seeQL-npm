@@ -34,13 +34,26 @@ router.post('/', async (req, res, next) => {
       getSelectedColumns(ast, visInfo)
     }
 
+    let errorMessage
     if (ast.orderby) {
+      // try {
+      //   const status = getOrderBy(ast, visInfo, tableArray)
+      // } catch(e) {
+      //   if (e.message == 'Duplicate Column Name') {
+      //     res.send(422)
+      //     res.send({ message: e.message });
+      //   }
+      // }
       const status = getOrderBy(ast, visInfo, tableArray)
       if (status === 'duplicate') {
-        throw new Error('column name too vague; specify table')
+        // throw new Error('column name too vague; specify table')
+        errorMessage = 'column name too vague; specify table'
+        next()
       }
       if (status === 'none') {
-        throw new Error('column does not exist')
+        // throw new Error('column does not exist')
+        errorMessage = 'column does not exist'
+        return
       }
     }
 
@@ -48,7 +61,12 @@ router.post('/', async (req, res, next) => {
       getJoin(ast, visInfo)
     }
 
-    res.send(visInfo)
+    if (errorMessage) {
+      res.status(422)
+      res.send({errorMessage})
+    } else {
+      res.send(visInfo)
+    }
   } catch (err) {
     next(err)
   }
