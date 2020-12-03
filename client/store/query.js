@@ -26,7 +26,11 @@ export const fetchQueryVis = queryStr => async dispatch => {
     const {data} = await axios.post('/api/query', {query: queryStr})
     dispatch(getQueryVis(data))
   } catch (err) {
-    console.error(err)
+    if (err.response.status === 422) {
+      dispatch(setQueryError(err.response.data)) //FINISH HERE
+    } else {
+      console.error(err)
+    }
   }
 }
 

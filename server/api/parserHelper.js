@@ -66,6 +66,7 @@ function uniqueColumnConfirmation(columnName, tableArray) {
     }
   }
   if (counter > 1) {
+    // throw new Error('Duplicate Column Name');
     return 'duplicate'
   }
   if (counter === 0) {
