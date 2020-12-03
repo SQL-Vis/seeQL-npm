@@ -63,6 +63,7 @@ export class QueryInput extends React.Component {
                   Submit
                   <i className="material-icons right">send</i>
                 </button>
+                {this.props.error && <p>{this.props.error.error}</p>}
               </div>
             </form>
           </div>
@@ -104,7 +105,8 @@ export class QueryInput extends React.Component {
 
 const mapStateToProps = state => ({
   queryVis: state.queryVis,
-  result: state.result
+  result: state.result,
+  error: state.error
 })
 
 const mapDispatchToProps = dispatch => ({
