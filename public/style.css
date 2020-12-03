@@ -90,6 +90,14 @@ td {
 .result-header {
   background-color: var(--highlighted);
 }
+
+.menu {
+  background-color: var(--offWhite);
+}
+
+.menuItem {
+  border-bottom: solid lightgrey 1px;
+}
 /* .queryVisBox{
 
 } */
