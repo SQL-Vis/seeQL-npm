@@ -4,6 +4,8 @@ import SearchVis from './SearchVis'
 import QueryInput from './queryInput'
 import Result from './result'
 import Key from './key'
+import CurrentSearch from './currentSearch'
+import QueryHistory from './queryHistory'
 
 export class Main extends React.Component {
   async componentDidMount() {}
@@ -11,9 +13,15 @@ export class Main extends React.Component {
   render() {
     return (
       <div className="container">
-        <QueryInput />
-        <div className="queryVisBox">
+        <div style={{display: 'flex', justifyContent: 'space-around'}}>
+          <div>
+            <QueryInput />
+            <QueryHistory />
+            <CurrentSearch />
+          </div>
           <Key />
+        </div>
+        <div className="queryVisBox">
           <SearchVis />
         </div>
         <div className="resultBox">

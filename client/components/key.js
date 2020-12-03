@@ -13,8 +13,6 @@ const Key = () => (
               <i className="material-icons">fingerprint</i>
             </td>
             <td>Primary Key</td>
-          </tr>
-          <tr>
             <td>
               <i className="material-icons">star</i>
             </td>
@@ -25,8 +23,6 @@ const Key = () => (
               <i className="material-icons">arrow_downward</i>
             </td>
             <td>Order Descending</td>
-          </tr>
-          <tr>
             <td>
               <i className="material-icons">arrow_upward</i>
             </td>
@@ -39,8 +35,6 @@ const Key = () => (
               </i>
             </td>
             <td>Join</td>
-          </tr>
-          <tr>
             <td>
               <i className="material-icons teal-text text-lighten-5">
                 brightness_1
