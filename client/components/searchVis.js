@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable complexity */
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchTables} from '../store/searchvis'
@@ -60,6 +62,12 @@ export class SearchVis extends React.Component {
                           queryVis.orderby.DESC.includes(
                             tableName + column
                           ) && <i className="material-icons">arrow_downward</i>}
+                        {queryVis.where &&
+                          queryVis.where
+                            .map(element => element.idStr)
+                            .includes(tableName + column) && (
+                            <i className="material-icons">feedback</i>
+                          )}
                       </td>
                     </tr>
                   )

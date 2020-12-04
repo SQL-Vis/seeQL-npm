@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 /* eslint-disable complexity */
 const router = require('express').Router()
 module.exports = router
@@ -8,7 +9,8 @@ const {
   getOrderBy,
   getSelectedColumns,
   getJoin,
-  formatTablesColumns
+  formatTablesColumns,
+  getWhere
 } = require('./parserHelper')
 
 //api/query
@@ -21,7 +23,8 @@ router.post('/', async (req, res, next) => {
       select: [],
       all: [],
       join: [],
-      orderby: {ASC: [], DESC: []}
+      orderby: {ASC: [], DESC: []},
+      where: []
     }
 
     const [results, metadata] = await db.query(
@@ -35,6 +38,7 @@ router.post('/', async (req, res, next) => {
     }
 
     let errorMessage
+
     if (ast.orderby) {
       const status = getOrderBy(ast, visInfo, tableArray)
       if (status === 'duplicate') {
@@ -43,7 +47,19 @@ router.post('/', async (req, res, next) => {
       }
       if (status === 'none') {
         errorMessage = 'Column does not exist.'
-        return
+        next()
+      }
+    }
+
+    if (ast.where) {
+      const status = getWhere(ast.where, visInfo, tableArray)
+      if (status === 'duplicate') {
+        errorMessage = 'Column name too vague; specify table.'
+        next()
+      }
+      if (status === 'none') {
+        errorMessage = 'Column does not exist.'
+        next()
       }
     }
 
