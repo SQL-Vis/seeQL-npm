@@ -8,6 +8,7 @@
 
 body {
   font-family: sans-serif;
+  font-weight: 300;
   background-color: var(--background);
 }
 
@@ -93,3 +94,33 @@ td {
 /* .queryVisBox{
 
 } */
+
+h5 {
+  font-weight: 300;
+  font-size: 20px;
+  color: #757575;
+  /* padding-left: 16px; */
+  height: 1.5rem;
+  line-height: 1.5rem;
+}
+
+.scrollspy p {
+  color: #757575;
+}
+
+h4 {
+  font-weight: 300;
+  color: #757575;
+  text-align: center;
+}
+
+.brand-logo {
+  font-weight: 500;
+}
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}

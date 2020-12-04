@@ -9,7 +9,7 @@ const Navbar = () => (
       </Link>
       <ul className="right hide-on-med-and-down">
         <li>
-          <Link to="/walkthrough">Walkthrough</Link>
+          <Link to="/walkthrough">Tutorial</Link>
         </li>
       </ul>
     </div>
