@@ -130,24 +130,34 @@ td {
 .copyright {
   position: fixed;
   bottom: 10px;
-} 
+}
 
 h5 {
   font-weight: 300;
   font-size: 20px;
-  color: #757575;
+  color: black;
   /* padding-left: 16px; */
   height: 1.5rem;
   line-height: 1.5rem;
 }
 
 .scrollspy p {
-  color: #757575;
+  color: black;
+}
+
+.scrollspy div {
+  background-color: var(--offWhite);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h4 {
   font-weight: 300;
-  color: #757575;
+  color: black;
   text-align: center;
 }
 
@@ -160,4 +170,16 @@ hr {
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#scroll-nav a {
+  color: black;
+}
+
+#scroll-nav a:hover {
+  border-left: 1px solid var(--tableHeader);
+}
+
+#results img {
+  width: 100px;
 }
