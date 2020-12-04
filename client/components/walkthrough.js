@@ -50,7 +50,7 @@ export default class WalkThrough extends React.Component {
             </div>
             <div id="supported" className="section scrollspy">
               <div>
-                <h5>Supported grammer </h5>
+                <h5>Supported grammar </h5>
                 <p>Currently, only select statements are supported.</p>
                 <img />
               </div>
@@ -72,7 +72,7 @@ export default class WalkThrough extends React.Component {
                 <a href="#results">View queried results</a>
               </li>
               <li>
-                <a href="#supported">Supported grammer</a>
+                <a href="#supported">Supported grammar</a>
               </li>
             </ul>
           </div>

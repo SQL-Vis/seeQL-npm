@@ -21,13 +21,14 @@ export class Main extends React.Component {
             <QueryHistory />
             <CurrentSearch />
           </div>
-          <div style={{width: '33%', marginTop: '30px'}}>
-            {/* <KeyMenu /> */}
+          <div className="topRightDiv">
             <Key />
           </div>
         </div>
         <div className="sectionBox">
-          <div className="sectionTitle">Database Schema & Visualization</div>
+          <div className="sectionTitle">
+            Database Schema & Search Visualization
+          </div>
           <div className="queryVisBox">
             <SearchVis />
           </div>
