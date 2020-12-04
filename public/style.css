@@ -209,7 +209,6 @@ hr {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-
 .topDiv {
   display: flex;
   justify-content: space-between;
@@ -236,7 +235,7 @@ hr {
   border-radius: 5px;
   margin-top: 25px;
   padding-bottom: 10px;
-
+}
 
 .container {
   margin: 30px auto;
@@ -255,6 +254,7 @@ hr {
 nav ul a {
   font-size: 1.3rem;
   padding: 0 30px;
+}
 
 #scroll-nav a {
   color: black;
@@ -266,6 +266,10 @@ nav ul a {
 
 #results img {
   width: 100px;
+}
 
-
+.table-of-contents a.active {
+  font-weight: 500;
+  padding-left: 14px;
+  border-left: 2px solid var(--tableHeader);
 }
