@@ -19,7 +19,10 @@ export class QueryHistory extends React.Component {
   render() {
     return (
       <div className="query-box">
-        <select onChange={this.handleSelect} className="browser-default">
+        <select
+          onChange={this.handleSelect}
+          className="browser-default defaultHistory"
+        >
           <option value="" disabled selected>
             Revisit a past search...
           </option>

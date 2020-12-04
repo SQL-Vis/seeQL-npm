@@ -41,15 +41,15 @@ export class QueryInput extends React.Component {
                 id="textarea1"
                 className="materialize-textarea"
               />
-              <button
-                className="btn waves-effect waves-light"
-                type="submit"
-                name="action"
-              >
-                Submit
-                <i className="material-icons right">send</i>
-              </button>
             </div>
+            <button
+              className="btn waves-effect waves-light"
+              type="submit"
+              name="action"
+            >
+              Submit
+              <i className="material-icons right">send</i>
+            </button>
             {(this.props.error.parser || this.props.error.database) && (
               <div>
                 {this.props.error.parser.error ||
