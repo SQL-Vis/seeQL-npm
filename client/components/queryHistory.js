@@ -18,10 +18,10 @@ export class QueryHistory extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="query-box">
         <select onChange={this.handleSelect} className="browser-default">
           <option value="" disabled selected>
-            Select a past search...
+            Revisit a past search...
           </option>
           {this.props.searches.lastSearches &&
             this.props.searches.lastSearches.map((search, idx) => {
