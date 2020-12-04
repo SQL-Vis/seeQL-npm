@@ -54,6 +54,34 @@ function getJoin(ast, visInfo) {
   }
 }
 
+function getWhere(whereObj, visInfo, tableArray) {
+  if (whereObj.operator !== 'AND') {
+    let whereVis = {
+      operator: whereObj.operator,
+      value: whereObj.right.value
+    }
+    if (whereObj.left.table) {
+      whereVis.idStr = whereObj.left.table + whereObj.left.column
+      visInfo.where.push(whereVis)
+    } else {
+      let tableMatch = uniqueColumnConfirmation(
+        whereObj.left.column,
+        tableArray
+      )
+      if (tableMatch !== 'duplicate' && tableMatch !== 'none') {
+        whereVis.idStr = tableMatch + whereObj.left.column
+        visInfo.where.push(whereVis)
+      } else {
+        return tableMatch
+      }
+    }
+  } else {
+    console.log('HELLO', whereObj.left)
+    getWhere(whereObj.left, visInfo, tableArray)
+    getWhere(whereObj.right, visInfo, tableArray)
+  }
+}
+
 function uniqueColumnConfirmation(columnName, tableArray) {
   let counter = 0
   let tableMatch = ''
@@ -104,5 +132,6 @@ module.exports = {
   getOrderBy,
   getSelectedColumns,
   getJoin,
+  getWhere,
   formatTablesColumns
 }
