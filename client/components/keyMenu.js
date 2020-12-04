@@ -46,7 +46,7 @@ export default class KeyMenu extends React.Component {
             }}
           >
             <li className="menuItem">
-              <i className="material-icons">fingerprint</i> Primary Key{' '}
+              <i className="material-icons">fingerprint</i> Primary Key
             </li>
             <li className="menuItem">
               <i className="material-icons">star</i> Foreign Key
@@ -69,7 +69,7 @@ export default class KeyMenu extends React.Component {
               </i>{' '}
               Column Selected
             </li>
-            <li>
+            <li className="menuItem">
               <i className="material-icons">feedback</i> Where Filter
             </li>
           </ul>

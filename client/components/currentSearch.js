@@ -4,11 +4,10 @@ import {connect} from 'react-redux'
 export class CurrentSearch extends React.Component {
   render() {
     return (
-      <div className="row">
-        <div className="card ">
-          <div className="card-content ">
-            Current search: {this.props.searches.currentSearch}
-          </div>
+      <div className="query-box">
+        <div className="inner-query-box">
+          <span className="bold-title">Current search: </span>
+          {this.props.searches.currentSearch}
         </div>
       </div>
     )

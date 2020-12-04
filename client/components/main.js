@@ -7,6 +7,7 @@ import Key from './key'
 import CurrentSearch from './currentSearch'
 import QueryHistory from './queryHistory'
 import KeyMenu from './keyMenu'
+import Footer from './footer'
 
 export class Main extends React.Component {
   async componentDidMount() {}
@@ -15,7 +16,7 @@ export class Main extends React.Component {
     return (
       <div className="container">
         <div style={{display: 'flex', justifyContent: 'space-between'}}>
-          <div style={{width: '70%'}}>
+          <div style={{width: '80%'}}>
             <QueryInput />
             <QueryHistory />
             <CurrentSearch />
@@ -30,6 +31,7 @@ export class Main extends React.Component {
         <div className="resultBox">
           <Result />
         </div>
+        <Footer />
       </div>
     )
   }

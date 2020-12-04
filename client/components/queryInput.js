@@ -29,32 +29,32 @@ export class QueryInput extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="query-box">
         <form onSubmit={this.handleSubmit}>
-          <div className="input-field">
-            <textarea
-              value={this.state.query}
-              type="text"
-              onChange={this.handleChange}
-              placeholder="Query"
-              id="textarea1"
-              className="materialize-textarea"
-            />
-            <button
-              className="btn waves-effect waves-light"
-              type="submit"
-              name="action"
-            >
-              Submit
-              <i className="material-icons right">send</i>
-            </button>
-            {this.props.error.parser || this.props.error.database ? (
-              <p>
+          <div id="inner-query-box">
+            <div id="submit-row">
+              <textarea
+                value={this.state.query}
+                type="text"
+                onChange={this.handleChange}
+                placeholder="Input SQL query here"
+                id="textarea1"
+                className="materialize-textarea"
+              />
+              <button
+                className="btn waves-effect waves-light"
+                type="submit"
+                name="action"
+              >
+                Submit
+                <i className="material-icons right">send</i>
+              </button>
+            </div>
+            {(this.props.error.parser || this.props.error.database) && (
+              <div>
                 {this.props.error.parser.error ||
                   this.props.error.database.error}
-              </p>
-            ) : (
-              <p />
+              </div>
             )}
           </div>
         </form>
