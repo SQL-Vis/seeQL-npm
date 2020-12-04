@@ -1,10 +1,9 @@
 :root {
   --background: #ffeca1;
   --tableHeader: #ffb05f;
-  /* --highlighted: #e0f2f1; */
+  --highlighted: #e0f2f1;
   --offWhite: #fffef7;
   --teal: #26a69a;
-  --highlighted: #ffd178ff;
 }
 
 body {
@@ -32,8 +31,11 @@ form div {
 }
 
 .table-container {
+  margin: 20px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 td {
@@ -41,11 +43,13 @@ td {
 }
 
 .vis-table {
-  margin: 20px;
-  padding: 5px;
+  margin: 0 px;
+  padding: 5 px;
   background-color: var(--offWhite);
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  min-width: 100px;
+  max-width: 300px;
 }
 
 .table-title {
@@ -130,7 +134,7 @@ td {
 .copyright {
   position: fixed;
   bottom: 10px;
-} 
+}
 
 h5 {
   font-weight: 300;
@@ -160,4 +164,23 @@ hr {
   height: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.container {
+  margin: 30px auto;
+  max-width: 1280px;
+  width: 80%;
+}
+
+.browser-default {
+  border-radius: 5px;
+  padding-left: 25px;
+  font-family: sans-serif;
+  font-weight: 300;
+  background-color: var(--offWhite);
+}
+
+nav ul a {
+  font-size: 1.3rem;
+  padding: 0 30px;
 }
