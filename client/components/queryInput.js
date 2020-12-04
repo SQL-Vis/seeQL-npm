@@ -50,10 +50,12 @@ export class QueryInput extends React.Component {
               Submit
               <i className="material-icons right">send</i>
             </button>
-            {(this.props.error.parser || this.props.error.database) && (
-              <div>
+            {(this.props.error.parser.error ||
+              this.props.error.database.error) && (
+              <div className="errorMessage">
                 {this.props.error.parser.error ||
                   this.props.error.database.error}
+                <i className="material-icons errorIcon">error_outline</i>
               </div>
             )}
           </div>

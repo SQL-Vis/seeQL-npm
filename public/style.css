@@ -281,3 +281,14 @@ nav ul a {
   padding-left: 14px;
   border-left: 2px solid var(--tableHeader);
 }
+
+.errorMessage {
+  color: var(--tableHeader);
+  font-weight: bold;
+  /* display: flex;
+  align-items: center; */
+}
+
+.errorIcon {
+  margin-top: 5px;
+}
