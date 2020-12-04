@@ -7,6 +7,7 @@ import CurrentSearch from './currentSearch'
 import QueryHistory from './queryHistory'
 import KeyMenu from './keyMenu'
 import Footer from './footer'
+import {connect} from 'react-redux'
 
 export class Main extends React.Component {
   async componentDidMount() {}
@@ -45,12 +46,8 @@ export class Main extends React.Component {
   }
 }
 
-
 const mapStateToProps = state => ({
   result: state.result
 })
 
-
-
 export default connect(mapStateToProps)(Main)
-
