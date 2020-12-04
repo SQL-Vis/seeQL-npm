@@ -15,29 +15,40 @@ export class Main extends React.Component {
   render() {
     return (
       <div className="container">
-        <div style={{display: 'flex', justifyContent: 'space-between'}}>
-          <div style={{width: '80%'}}>
+        <div className="topDiv">
+          <div className="topLeftDiv">
             <QueryInput />
             <QueryHistory />
             <CurrentSearch />
           </div>
           <div style={{width: '20%', marginTop: '30px'}}>
-            <KeyMenu />
+            {/* <KeyMenu /> */}
+            <Key />
           </div>
         </div>
-        <div className="queryVisBox">
-          <SearchVis />
+        <div className="sectionBox">
+          <div className="sectionTitle">Database Schema & Visualization</div>
+          <div className="queryVisBox">
+            <SearchVis />
+          </div>
         </div>
-        <div className="resultBox">
-          <Result />
-        </div>
+        {this.props.result.columns && (
+          <div className="sectionBox">
+            <div className="sectionTitle">Query Result</div>
+            <div className="resultBox">
+              <Result />
+            </div>
+          </div>
+        )}
         <Footer />
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  result: state.result
+})
 
 const mapDispatchToProps = dispatch => ({})
 
