@@ -9,7 +9,7 @@ const Navbar = () => (
         <img alt="" src="/diagram.svg" width="30" height="30" /> seeQL
       </Link>
       <ul className="right hide-on-med-and-down">
-        <li>
+        <li id="tutorial-link">
           <Link to="/walkthrough">Tutorial</Link>
         </li>
       </ul>
