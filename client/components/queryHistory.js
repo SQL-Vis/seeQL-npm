@@ -21,7 +21,7 @@ export class QueryHistory extends React.Component {
       <div className="query-box">
         <select
           onChange={this.handleSelect}
-          className="browser-default defaultHistory"
+          className="browser-default defaultHistory truncate"
         >
           <option value="" disabled selected>
             Revisit a past search or select a sample search...
