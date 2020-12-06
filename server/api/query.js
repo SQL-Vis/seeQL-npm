@@ -16,7 +16,11 @@ const {
 //api/query
 router.post('/', async (req, res, next) => {
   try {
-    const ast = parser.astify(req.body.query) // mysql sql grammer parsed by default
+    const query = req.body.query
+      .split('')
+      .filter(e => e !== ';')
+      .join('')
+    const ast = parser.astify(query) // mysql sql grammer parsed by default
     //converting object from parser to object to send to our vis
 
     const visInfo = {
