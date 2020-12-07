@@ -1,6 +1,6 @@
 import {expect} from 'chai'
 import sinon from 'sinon'
-import {mount, shallow, configure} from 'enzyme'
+import {shallow, configure} from 'enzyme'
 import {SearchVis} from './searchVis'
 const {JSDOM} = require('jsdom')
 import mockAxios from './mock-axios'
