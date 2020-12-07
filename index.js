@@ -1,7 +1,7 @@
 const compose = require('compose-middleware').compose
 const path = require('path')
 const express = require('express')
-const api = require('./api')
+const api = require('./server/api')
 
 module.exports = function(db) {
   return compose([
@@ -18,7 +18,7 @@ module.exports = function(db) {
     api, // REMEMBER TO CHANGE ROUTE TO ADD API
 
     // static file-serving middleware
-    express.static(path.join(__dirname, '..', 'public')), // REMEMBER TO ADD BUNDLE
+    express.static(path.join(__dirname, './', 'public')), // REMEMBER TO ADD BUNDLE
 
     // error handling endware
     (err, req, res, next) => {
