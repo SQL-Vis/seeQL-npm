@@ -4,10 +4,15 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchTables} from '../store/searchvis'
 import Xarrow from 'react-xarrows'
+import {Tooltip} from '@material-ui/core'
 
 export class SearchVis extends React.Component {
   componentDidMount() {
     this.props.getModels()
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.tooltipped')
+      var instances = M.Tooltip.init(elems, options)
+    })
   }
   render() {
     const queryVis = this.props.queryVis || {}
@@ -66,7 +71,18 @@ export class SearchVis extends React.Component {
                           queryVis.where
                             .map(element => element.idStr)
                             .includes(tableName + column) && (
-                            <i className="material-icons">feedback</i>
+                            <Tooltip
+                              title={
+                                <span className="tooltipText">
+                                  {queryVis.where
+                                    .filter(e => e.idStr === tableName + column)
+                                    .map(e => e.operator + ' ' + e.value)
+                                    .join(', ')}
+                                </span>
+                              }
+                            >
+                              <i className="material-icons">feedback</i>
+                            </Tooltip>
                           )}
                       </td>
                     </tr>
@@ -84,7 +100,11 @@ export class SearchVis extends React.Component {
                 key={index}
                 start={joinObject.left}
                 end={joinObject.right}
-                label={joinObject.type}
+                label={joinObject.type
+                  .split(' ')
+                  .map(e => e[0])
+                  .join('')
+                  .toUpperCase()}
                 color="#26a69a"
                 dashness={{strokeLen: 10, nonStrokeLen: 10, animation: 1.5}}
               />
