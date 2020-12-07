@@ -272,8 +272,16 @@ nav ul a {
   border-left: 1px solid var(--tableHeader);
 }
 
-#results img {
-  width: 100px;
+.gif {
+  width: 400px;
+  border: solid 1px var(--teal);
+  border-radius: 5px;
+}
+
+#keyImg {
+  width: 200px;
+  border: solid 1px var(--teal);
+  border-radius: 5px;
 }
 
 .table-of-contents a.active {
