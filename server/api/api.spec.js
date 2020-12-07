@@ -5,13 +5,8 @@ const db = require('../db')
 const app = require('../index')
 
 describe('Query routes', () => {
-  beforeEach(() => {
-    return db.sync({force: true})
-  })
-
   describe('/api/query/result', () => {
     const query2 = {query: 'select name from artists'}
-
     it('POST /api/query/result', async () => {
       const res = await request(app)
         .post('/api/query/result')
@@ -19,10 +14,10 @@ describe('Query routes', () => {
         .expect(200)
 
       expect(res.body).to.be.an('object')
-      // expect(res.body.columns).to.be.an("array")
-      // expect(res.body.rows).to.be.an("array")
-      // expect(res.body.columns[0]).to.be.equal("title")
-      // expect(res.body.rows[0]).to.be.an("object")
+      expect(res.body.columns).to.be.an('array')
+      expect(res.body.rows).to.be.an('array')
+      expect(res.body.columns[0]).to.be.equal('name')
+      expect(res.body.rows[0]).to.be.an('object')
     })
   }) // end describe('/api/result')
 

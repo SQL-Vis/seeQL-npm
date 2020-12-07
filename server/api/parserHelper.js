@@ -76,7 +76,6 @@ function getWhere(whereObj, visInfo, tableArray) {
       }
     }
   } else {
-    console.log('HELLO', whereObj.left)
     getWhere(whereObj.left, visInfo, tableArray)
     getWhere(whereObj.right, visInfo, tableArray)
   }
