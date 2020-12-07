@@ -10,7 +10,7 @@ export default class WalkThrough extends React.Component {
   render() {
     return (
       <div className="container">
-        <h4>Tutorial</h4>
+        <h4 id="tutorialHeader">Tutorial</h4>
         <hr />
         <div className="row">
           <div className="col s12 m9 l10">

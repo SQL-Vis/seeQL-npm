@@ -57,7 +57,6 @@ td {
   border-top-right-radius: 5px;
   text-align: center;
   background-color: var(--tableHeader);
-  /* #b2dfdb */
 }
 
 #last-search {
@@ -73,10 +72,6 @@ td {
   background-color: #fffef7;
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-}
-.queryVisBox {
-  /* padding-left: 10px;
-  padding-right: 10px */
 }
 
 .inner-query-box {
@@ -132,20 +127,13 @@ td {
   padding-left: 25px;
 }
 
-/* .menu {
-  background-color: var(--offWhite);
-  border-radius: 5px;
-} */
-
 .menuItem {
-  /* border-bottom: solid lightgrey 1px; */
   padding: 2px;
   display: flex;
   align-items: center;
   background-color: var(--offWhite);
 }
 .menuItemHeader {
-  /* border-bottom: solid lightgrey 1px; */
   padding: 5px;
   display: flex;
   align-items: center;
@@ -159,6 +147,7 @@ td {
   box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   margin-left: 5px;
+  margin-right: 20px;
 }
 
 .menuIcon {
@@ -175,7 +164,6 @@ h5 {
   font-weight: 300;
   font-size: 20px;
   color: black;
-  /* padding-left: 16px; */
   height: 1.5rem;
   line-height: 1.5rem;
 }
@@ -239,7 +227,6 @@ hr {
 }
 
 .sectionBox {
-  /* box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25); */
   border-radius: 5px;
   margin-top: 25px;
   padding-bottom: 10px;
@@ -293,10 +280,17 @@ nav ul a {
 .errorMessage {
   color: var(--tableHeader);
   font-weight: bold;
-  /* display: flex;
-  align-items: center; */
 }
 
 .errorIcon {
   margin-top: 5px;
+}
+
+#tutorialHeader {
+  color: var(--offWhite);
+  background-color: var(--tableHeader);
+  padding: 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.2);
 }

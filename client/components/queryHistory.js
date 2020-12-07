@@ -47,7 +47,6 @@ export class QueryHistory extends React.Component {
             artists on songs."artistId" = artists.id WHERE artists.age {'>'} 28
             AND artists.age {'<'} 35
           </option>
-          {/* <option value=''></option> */}
           {this.props.searches.lastSearches &&
             this.props.searches.lastSearches.map((search, idx) => {
               return (

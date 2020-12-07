@@ -2,14 +2,6 @@ import React from 'react'
 
 const Key = () => (
   <div>
-    {/* <button
-          onClick={this.showMenu}
-          className="btn waves-effect waves-light"
-        >
-          Show Key
-          <i className="material-icons right">vpn_key</i>
-        </button> */}
-
     <ul className="collection key">
       <li className="menuItemHeader">
         <strong>Key</strong> <i className="material-icons right">vpn_key</i>

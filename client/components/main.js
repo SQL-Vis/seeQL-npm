@@ -1,13 +1,14 @@
 import React from 'react'
-import SearchVis from './SearchVis'
-import QueryInput from './queryInput'
-import Result from './result'
-import Key from './key'
-import CurrentSearch from './currentSearch'
-import QueryHistory from './queryHistory'
-import KeyMenu from './keyMenu'
-import Footer from './footer'
 import {connect} from 'react-redux'
+import {
+  SearchVis,
+  QueryInput,
+  Result,
+  Key,
+  CurrentSearch,
+  QueryHistory,
+  Footer
+} from './index'
 
 export class Main extends React.Component {
   async componentDidMount() {}

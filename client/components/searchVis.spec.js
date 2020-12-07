@@ -25,7 +25,7 @@ describe('searchVis component', () => {
     }
   ]
   beforeEach(() => {
-    mockAxios.onGet('/api/music/models').replyOnce(200, queryArr)
+    mockAxios.onGet('/api/models').replyOnce(200, queryArr)
   })
 
   describe('can render based on passed props', () => {

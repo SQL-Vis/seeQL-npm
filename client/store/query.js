@@ -21,7 +21,6 @@ const getQueryVis = queryVis => ({type: GET_QUERY_VIS, queryVis})
  * THUNK CREATORS
  */
 
-//@Natalie - is this the right way to do this (with a post instead of a get)?
 export const fetchQueryVis = queryStr => async dispatch => {
   try {
     const {data} = await axios.post('/api/query', {query: queryStr})
