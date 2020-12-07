@@ -6,7 +6,7 @@ export default class Routes extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/walkthrough" component={Walkthrough} />
+        <Route exact path="/seeql/walkthrough" component={Walkthrough} />
         <Route component={Main} />
       </Switch>
     )

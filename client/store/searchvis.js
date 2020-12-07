@@ -1,5 +1,4 @@
 import axios from 'axios'
-import history from '../history'
 
 /**
  * ACTION TYPES
@@ -22,7 +21,7 @@ const getTables = tables => ({type: GET_TABLES, tables})
 
 export const fetchTables = () => async dispatch => {
   try {
-    const {data} = await axios.get('/api/models')
+    const {data} = await axios.get('./api/models')
     dispatch(getTables(data))
   } catch (err) {
     console.error(err)

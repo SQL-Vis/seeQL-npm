@@ -1,5 +1,5 @@
 import axios from 'axios'
-import history from '../history'
+// import history from '../history'
 import {getParserError} from './error'
 
 /**
@@ -23,7 +23,7 @@ const getQueryVis = queryVis => ({type: GET_QUERY_VIS, queryVis})
 
 export const fetchQueryVis = queryStr => async dispatch => {
   try {
-    const {data} = await axios.post('/api/query', {query: queryStr})
+    const {data} = await axios.post('./api/query', {query: queryStr})
     dispatch(getQueryVis(data))
     dispatch(getParserError({}))
   } catch (err) {

@@ -19,7 +19,7 @@ router.get('/example', async (req, res, next) => {
 
 router.get('/', async (req, res, next) => {
   try {
-    const [results, metadata] = await db.query(
+    const [results, metadata] = await req.seeqlDb.query(
       "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema='public'"
     )
     //redid with lodash
