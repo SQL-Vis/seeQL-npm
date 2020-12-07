@@ -14,3 +14,4 @@ select count(\*) from songs // we need to make sure that our selector code can n
 select songs.title, artists.name, albums.title
 from songs left join artists on songs."artistId" = artists.id left join albums on songs."albumId" = albums.id
 
+select songs.title as songTitle, albums.title as albumTitle, artists.name from songs left join artists on songs."artistId" = artists.id left join albums on songs."albumId" = albums.id
