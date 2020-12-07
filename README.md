@@ -10,7 +10,7 @@ Welcome to seeQL, a library that assists with building a SQL query by displaying
 
 3.  View results: The results of the current query can be viewed in the results table. The key can be used for identifying denotations represented by icons in the schema diagram.
 
-## Supported Grammer
+## Supported Grammar
 
 Currently, only select statements are supported.
 

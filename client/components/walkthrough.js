@@ -48,6 +48,7 @@ export default class WalkThrough extends React.Component {
                   The key can be used for identifying denotations represented by
                   icons and arrows in the schema diagram.
                 </p>
+                <img id="keyImg" src="/key.png" />
                 <ul>
                   <li>
                     Primary Key indicates a model's primary identifying key.
@@ -80,8 +81,6 @@ export default class WalkThrough extends React.Component {
                     constrained by a where clause on the marked column.
                   </li>
                 </ul>
-
-                <img id="keyImg" src="/key.png" />
                 <p>
                   The results of the current query can be viewed in the results
                   table at the bottom of the page. In the results table, click
