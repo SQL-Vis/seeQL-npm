@@ -33,7 +33,7 @@ export class QueryInput extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div id="inner-query-box">
             <div id="submit-row">
-              <textarea
+              <input
                 value={this.state.query}
                 type="text"
                 onChange={this.handleChange}

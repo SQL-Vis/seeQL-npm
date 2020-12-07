@@ -1,6 +1,6 @@
 import {expect} from 'chai'
 import sinon from 'sinon'
-import {mount, shallow, configure} from 'enzyme'
+import {shallow, configure} from 'enzyme'
 import {SearchVis} from './searchVis'
 const {JSDOM} = require('jsdom')
 import mockAxios from './mock-axios'
@@ -28,7 +28,7 @@ describe('searchVis component', () => {
     mockAxios.onGet('/api/music/models').replyOnce(200, queryArr)
   })
 
-  describe('searchVis component', () => {
+  describe('can render based on passed props', () => {
     afterEach(() => {
       getSearchVisSpy.resetHistory()
     })
@@ -70,8 +70,5 @@ describe('searchVis component', () => {
       />
     )
     expect(wrapper.find('.highlighted')).to.have.length(2)
-    // expect(wrapper.find('.highlighted').text()).to.equal('age')
-    // expect(wrapper.find('.highlighted').text()).to.equal('title')
-    expect(wrapper.find('.highlighted').text()).to.not.equal('genre')
   })
 })

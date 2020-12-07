@@ -6,7 +6,6 @@ import {DataGrid} from '@material-ui/data-grid'
 export class Result extends React.Component {
   render() {
     const result = this.props.result || {}
-
     let columns
     let rows
     if (result.columns) {
