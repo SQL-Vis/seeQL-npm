@@ -13,8 +13,6 @@ const {
   getWhere
 } = require('./parserHelper')
 
-// const { Client } = require('pg')
-
 //api/query
 router.post('/', async (req, res, next) => {
   try {
@@ -22,7 +20,7 @@ router.post('/', async (req, res, next) => {
       .split('')
       .filter(e => e !== ';')
       .join('')
-    const ast = parser.astify(query) // mysql sql grammer parsed by default
+    const ast = parser.astify(query)
     //converting object from parser to object to send to our vis
 
     const visInfo = {
@@ -92,15 +90,7 @@ router.post('/result', async (req, res, next) => {
     const columns = Object.keys(results[0])
     const final = {columns: columns, rows: results}
     res.send(final)
-
-    // const client = new Client({database: 'SQL-Vis'})
-    // await client.connect()
-    // const res = await client.query(req.body.query)
-    // console.log(res)
-    // await client.end()
   } catch (err) {
-    // console.log(err)
-    // res.send(err)
     res.status(422).send({error: 'Sorry, this is not a valid query.'})
   }
 })

@@ -6,22 +6,18 @@ const {formatTablesColumns} = require('./parserHelper')
 const db = require('../db')
 var _ = require('lodash')
 
-router.get('/', async (req, res, next) => {
+router.get('/example', async (req, res, next) => {
   try {
-    // const ast = parser.astify(
-    //   'select songs.title, artists.age from songs left join artists on song.artistId = artists.id'
-    // )
-    // mysql sql grammer parsed by default
     const ast = parser.astify(
       'select songs.title, artists.age from songs right join artists on songs."artistId" = artists.id where artists.age = 28'
-    ) // mysql sql grammer parsed by default
+    )
     res.send(ast)
   } catch (err) {
     next(err)
   }
 })
 
-router.get('/models', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const [results, metadata] = await db.query(
       "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema='public'"

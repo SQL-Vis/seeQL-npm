@@ -56,7 +56,7 @@ describe('thunk creators', () => {
   describe('fetchTables', () => {
     it('eventually dispatches the GET TABLES action', async () => {
       const fakeTable = ['tableColumn', 'tableColumn', 'tableColumn']
-      mockAxios.onGet('/api/music/models').replyOnce(200, fakeTable)
+      mockAxios.onGet('/api/models').replyOnce(200, fakeTable)
       await store.dispatch(fetchTables())
       const actions = store.getActions()
       expect(actions[0].type).to.be.equal('GET_TABLES')

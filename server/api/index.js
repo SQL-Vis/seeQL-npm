@@ -1,7 +1,7 @@
 const router = require('express').Router()
 module.exports = router
 
-router.use('/music', require('./music'))
+router.use('/models', require('./models'))
 router.use('/query', require('./query'))
 
 router.use((req, res, next) => {

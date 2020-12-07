@@ -21,19 +21,6 @@ export const getLastSearches = lastSearch => ({
   lastSearch
 })
 
-// /**
-//  * THUNK CREATORS
-//  */
-
-// export const fetchTables = () => async (dispatch) => {
-//   try {
-//     const {data} = await axios.get('/api/music/models')
-//     dispatch(getTables(data))
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
-
 /**
  * REDUCER
  */
