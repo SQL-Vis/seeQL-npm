@@ -27,7 +27,7 @@ router.post('/', async (req, res, next) => {
       where: []
     }
 
-    const [results, metadata] = await db.query(
+    const [results, metadata] = await req.seeqlDb.query(
       "SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE table_schema='public'"
     )
 
@@ -82,7 +82,7 @@ router.post('/', async (req, res, next) => {
 router.post('/result', async (req, res, next) => {
   try {
     const query = req.body.query
-    const [results, metadata] = await db.query(query)
+    const [results, metadata] = await req.seeqlDb.query(query)
     const columns = Object.keys(results[0])
     const final = {columns: columns, rows: results}
     res.send(final)
