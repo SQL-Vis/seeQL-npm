@@ -161,6 +161,15 @@ td {
   bottom: 10px;
 }
 
+.footer {
+  background-color: var(--highlighted);
+  padding-left: 10px;
+}
+
+.footer a {
+  color: var(--teal);
+}
+
 h5 {
   font-weight: 300;
   font-size: 20px;
