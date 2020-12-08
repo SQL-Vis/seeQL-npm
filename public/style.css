@@ -4,6 +4,9 @@
   --highlighted: #e0f2f1;
   --offWhite: #fffef7;
   --teal: #26a69a;
+  --teal2: #b2dfdb;
+  --teal3: #80cbc4;
+  --teal4: #00796b;
 }
 
 body {
@@ -349,4 +352,56 @@ nav ul a {
   height: 400px;
   margin-right: 20px;
   margin-left: 20px;
+}
+
+div.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+}
+.loaderItem {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 100%;
+  margin: 1vw;
+  background-image: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  animation: bounce 1.5s 0.5s linear infinite;
+}
+.teal1 {
+  background-color: var(--teal2);
+}
+
+.teal2 {
+  background-color: var(--teal3);
+  animation-delay: 0.1s;
+}
+
+.teal3 {
+  background-color: var(--teal);
+  animation-delay: 0.2s;
+}
+
+.teal4 {
+  background-color: var(--teal4);
+  animation-delay: 0.3s;
+}
+
+@keyframes bounce {
+  0%,
+  50%,
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  25% {
+    transform: scale(0.6);
+  }
+  75% {
+    transform: scale(1.4);
+  }
 }
