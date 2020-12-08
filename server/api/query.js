@@ -47,11 +47,9 @@ router.post('/', async (req, res, next) => {
       const status = getOrderBy(ast, visInfo, tableArray)
       if (status === 'duplicate') {
         errorMessage = 'Column name too vague; specify table.'
-        next()
       }
       if (status === 'none') {
         errorMessage = 'Column does not exist.'
-        next()
       }
     }
 
@@ -59,11 +57,9 @@ router.post('/', async (req, res, next) => {
       const status = getWhere(ast.where, visInfo, tableArray)
       if (status === 'duplicate') {
         errorMessage = 'Column name too vague; specify table.'
-        next()
       }
       if (status === 'none') {
         errorMessage = 'Column does not exist.'
-        next()
       }
     }
 

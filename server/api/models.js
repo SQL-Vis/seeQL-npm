@@ -24,6 +24,12 @@ router.get('/', async (req, res, next) => {
     )
     //redid with lodash
     let prettierArray = formatTablesColumns(results)
+    _.forEach(prettierArray, function(value) {
+      _.forEach(value, function(value, key) {
+        value.sort().unshift(value.splice(value.indexOf('id'), 1)[0])
+      })
+    })
+    res.send(prettierArray)
 
     //original script
     // let prettierArray = results.reduce(
@@ -46,12 +52,7 @@ router.get('/', async (req, res, next) => {
     //   ['test']
     // )
     //redid with lodash
-    _.forEach(prettierArray, function(value) {
-      _.forEach(value, function(value, key) {
-        value.sort().unshift(value.splice(value.indexOf('id'), 1)[0])
-      })
-    })
-    res.send(prettierArray)
+
     //original script
     // let songsArray = prettierArray.slice(1)[0].songs.sort()
     // songsArray.unshift(songsArray.splice(songsArray.indexOf('id'), 1))
