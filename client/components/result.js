@@ -23,7 +23,7 @@ export class Result extends React.Component {
       })
     }
     return (
-      <div id="results">
+      <div id="resultStyle">
         {result.columns &&
           !this.props.error.error && (
             <DataGrid
