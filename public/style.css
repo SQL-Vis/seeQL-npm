@@ -335,3 +335,9 @@ nav ul a {
   padding: 10px;
   width: 90%;
 }
+
+#results {
+  height: 400px;
+  margin-right: 20px;
+  margin-left: 20px;
+}

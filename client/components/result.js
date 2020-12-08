@@ -23,7 +23,7 @@ export class Result extends React.Component {
       })
     }
     return (
-      <div style={{height: 400, width: '100%'}}>
+      <div id="results">
         {result.columns &&
           !this.props.error.error && (
             <DataGrid
