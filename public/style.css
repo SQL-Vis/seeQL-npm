@@ -307,3 +307,31 @@ nav ul a {
   padding: 5px;
   font-size: 16px;
 }
+
+.copy-button {
+  position: relative;
+  right: 4px;
+}
+
+#copy-button {
+  border-radius: 10%;
+  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  align-self: center;
+}
+
+.current-search-box {
+  margin: 20px;
+  background-color: #fffef7;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.inner-current-search-box {
+  margin: 20px;
+  padding: 10px;
+  width: 90%;
+}
