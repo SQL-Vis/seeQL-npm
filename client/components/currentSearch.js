@@ -44,7 +44,9 @@ export class CurrentSearch extends React.Component {
           </span>
         </div>
         <div>
-          <Tooltip title={this.state.copied}>
+          <Tooltip
+            title={<span className="tooltipText">{this.state.copied}</span>}
+          >
             <button
               type="button"
               id="copy-button"
