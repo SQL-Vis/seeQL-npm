@@ -12,7 +12,6 @@ module.exports = function(db) {
 
     // parsing middleware
     express.json(),
-    express.urlencoded({extended: true}),
 
     // auth and api routes
     api, // REMEMBER TO CHANGE ROUTE TO ADD API
