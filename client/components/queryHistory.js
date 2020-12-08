@@ -17,6 +17,26 @@ export class QueryHistory extends React.Component {
       ]
     }
     this.handleSelect = this.handleSelect.bind(this)
+    this.generateDefaultQuery = this.generateDefaultQuery.bind(this)
+  }
+
+  componentDidUpdate(prevprops) {
+    if (prevprops.tables !== this.props.tables) {
+      this.setState({
+        options: [...this.state.options, this.generateDefaultQuery()]
+      })
+    }
+  }
+
+  generateDefaultQuery() {
+    let column = ''
+    let table = ''
+    if (this.props.tables.length) {
+      column = this.props.tables[0][Object.keys(this.props.tables[0])[0]][0]
+      table = Object.keys(this.props.tables[0])[0]
+    }
+    let query = `SELECT ${column} FROM ${table}`
+    return query
   }
 
   handleSelect(e) {
@@ -34,11 +54,9 @@ export class QueryHistory extends React.Component {
           <option value="" disabled selected>
             Revisit a past search or select a sample search...
           </option>
-          <option value={this.state.options[0]}>{this.state.options[0]}</option>
-          <option value={this.state.options[1]}>{this.state.options[1]}</option>
-          <option value={this.state.options[2]}>{this.state.options[2]}</option>
-          <option value={this.state.options[3]}>{this.state.options[3]}</option>
-          <option value={this.state.options[4]}>{this.state.options[4]}</option>
+          {this.state.options.map(option => {
+            return <option value={option}>{option}</option>
+          })}
           {this.props.searches.lastSearches &&
             this.props.searches.lastSearches.map((search, idx) => {
               return (
@@ -54,7 +72,8 @@ export class QueryHistory extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  searches: state.searches
+  searches: state.searches,
+  tables: state.tables
 })
 
 const mapDispatchToProps = dispatch => ({
