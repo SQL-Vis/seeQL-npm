@@ -5,16 +5,31 @@ import {connect} from 'react-redux'
 import {fetchTables} from '../store/searchvis'
 import Xarrow from 'react-xarrows'
 import {Tooltip} from '@material-ui/core'
+import {Loader} from './index.js'
 
 export class SearchVis extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      loading: true
+    }
+  }
+
   componentDidMount() {
     this.props.getModels()
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.tooltipped')
       var instances = M.Tooltip.init(elems, options)
     })
+    this.setState({
+      loading: false
+    })
   }
   render() {
+    if (this.state.loading) {
+      return <Loader />
+    }
+
     const queryVis = this.props.queryVis || {}
     return (
       <div className="table-container">

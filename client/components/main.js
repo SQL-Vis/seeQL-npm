@@ -7,13 +7,29 @@ import {
   Key,
   CurrentSearch,
   QueryHistory,
-  Footer
+  Footer,
+  Loader
 } from './index'
 
 export class Main extends React.Component {
-  async componentDidMount() {}
+  constructor() {
+    super()
+    this.state = {
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      loading: false
+    })
+  }
 
   render() {
+    if (this.state.loading) {
+      return <Loader />
+    }
+
     return (
       <div>
         <div className="container">
