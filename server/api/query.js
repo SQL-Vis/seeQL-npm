@@ -18,7 +18,7 @@ router.post('/', async (req, res, next) => {
   try {
     const query = req.body.query
       .split('')
-      .filter(e => e !== ';')
+      .filter(e => e !== ';' && e !== '"')
       .join('')
     const ast = parser.astify(query)
     //converting object from parser to object to send to our vis

@@ -41,8 +41,7 @@ export class Main extends React.Component {
     } else {
       currentSearch = this.props.searches.currentSearch
     }
-    console.log(currentSearch)
-    this.props.getResult(currentSearch)
+    if (currentSearch) this.props.getResult(currentSearch)
   }
 
   render() {
@@ -57,7 +56,6 @@ export class Main extends React.Component {
             <div className="topLeftDiv">
               <QueryInput />
               <QueryHistory />
-              <CurrentSearch />
             </div>
             <div className="topRightDiv">
               <Key />

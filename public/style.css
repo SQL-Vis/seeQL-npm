@@ -79,6 +79,14 @@ td {
   border-radius: 5px;
 }
 
+.select-box {
+  margin: 20px;
+  margin-top: 37px;
+  background-color: #fffef7;
+  box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
 .inner-query-box {
   margin: 20px;
   padding: 10px;
@@ -166,6 +174,9 @@ td {
 }
 
 .footer {
+  position: relative;
+  bottom: 0px;
+  width: 100%;
   background-color: var(--highlighted);
   padding-left: 10px;
 }

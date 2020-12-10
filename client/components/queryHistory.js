@@ -32,8 +32,11 @@ export class QueryHistory extends React.Component {
     let column = ''
     let table = ''
     if (this.props.tables.length) {
-      column = this.props.tables[0][Object.keys(this.props.tables[0])[0]][0]
+      column = this.props.tables[0][Object.keys(this.props.tables[0])[0]][1]
       table = Object.keys(this.props.tables[0])[0]
+    }
+    if (column.toLowerCase() !== column) {
+      column = `"${column}"`
     }
     let query = `SELECT ${column} FROM ${table}`
     return query
@@ -46,7 +49,7 @@ export class QueryHistory extends React.Component {
   }
   render() {
     return (
-      <div className="query-box">
+      <div className="select-box">
         <select
           onChange={this.handleSelect}
           className="browser-default defaultHistory truncate"
@@ -54,8 +57,12 @@ export class QueryHistory extends React.Component {
           <option value="" disabled selected>
             Revisit a past search or select a sample search...
           </option>
-          {this.state.options.map(option => {
-            return <option value={option}>{option}</option>
+          {this.state.options.map((option, idx) => {
+            return (
+              <option key={idx} value={option}>
+                {option}
+              </option>
+            )
           })}
           {this.props.searches.lastSearches &&
             this.props.searches.lastSearches.map((search, idx) => {
