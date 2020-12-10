@@ -50,7 +50,7 @@ export class Main extends React.Component {
     }
 
     return (
-      <div>
+      <div className="page-container">
         <div className="container">
           <div className="topDiv">
             <div className="topLeftDiv">
