@@ -450,3 +450,20 @@ div.loader {
 select {
   border: none;
 }
+
+.list {
+  margin-top: 8px;
+  margin-left: 15px;
+}
+
+.listGrammar {
+  margin-top: 8px;
+}
+
+.bold {
+  font-weight: 100;
+}
+
+#keyTutorialContainer {
+  display: flex;
+}

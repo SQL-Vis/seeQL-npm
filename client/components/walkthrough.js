@@ -23,7 +23,7 @@ export default class WalkThrough extends React.Component {
                 </p>
                 <img
                   className="gif"
-                  src="https://media.giphy.com/media/iGAMgsoJ59IAzHxYew/giphy.gif"
+                  src="https://media.giphy.com/media/iBoVVepU14VTzTNklc/giphy.gif"
                 />
               </div>
             </div>
@@ -37,7 +37,7 @@ export default class WalkThrough extends React.Component {
                 </p>
                 <img
                   className="gif"
-                  src="https://media.giphy.com/media/GsIiMqsJ4Mie49WIcD/giphy.gif"
+                  src="https://media.giphy.com/media/5Tg3Mub5nnZK8dSAo4/giphy.gif"
                 />
               </div>
             </div>
@@ -50,34 +50,34 @@ export default class WalkThrough extends React.Component {
                 </p>
                 <img id="keyImg" src="./key.png" />
                 <ul>
-                  <li>
-                    Primary Key indicates a model's primary identifying key.
+                  <li className="list">
+                    - Primary Key indicates a model's primary identifying key.
                     This will typically be "id"
                   </li>
-                  <li>
-                    Foreign Key indicates a foreign key that associates a model
-                    to another model.
+                  <li className="list">
+                    - Foreign Key indicates a foreign key that associates a
+                    model to another model.
                   </li>
-                  <li>
-                    Order Ascending indicates that the results are ordered by
+                  <li className="list">
+                    - Order Ascending indicates that the results are ordered by
                     this column in ascending order (lowest to highest, A-Z)
                   </li>
-                  <li>
-                    Order Descending indicates that the results are ordered by
+                  <li className="list">
+                    - Order Descending indicates that the results are ordered by
                     this column in descending order (highest to lowest, Z-A)
                   </li>
-                  <li>
-                    Join indicates that two models are being joined via primary
-                    and foreign keys. The arrow points from the primary key
-                    column to the foreign key column.{' '}
+                  <li className="list">
+                    - Join indicates that two models are being joined via
+                    primary and foreign keys. The arrow points from the primary
+                    key column to the foreign key column.{' '}
                   </li>
-                  <li>
-                    Column Selected indicates which columns in each model are
+                  <li className="list">
+                    - Column Selected indicates which columns in each model are
                     being targeted from the query and will appear in the results
                     table. Columns will be highlited if they are selected.
                   </li>
-                  <li>
-                    Where Filter indicates that the query results are
+                  <li className="list">
+                    - Where Filter indicates that the query results are
                     constrained by a where clause on the marked column.
                   </li>
                 </ul>
@@ -91,27 +91,44 @@ export default class WalkThrough extends React.Component {
                   className="gif"
                   src="https://media.giphy.com/media/RlwpTL9Rh6MhxcEZug/giphy.gif"
                 />
+                <p>
+                  Use the up & down arrows to toggle the result and
+                  visualization windows open and closed.
+                </p>
+                <img
+                  className="gif"
+                  src="https://media.giphy.com/media/y4BXh1MMZyYt6bbrTG/giphy.gif"
+                />
               </div>
             </div>
             <div id="supported" className="section scrollspy">
               <div>
                 <h5>Supported grammar </h5>
-                <p>Currently, only select statements are supported.</p>
-                <p>
-                  When writing a select statement, you may use either capital or
-                  lowercase letters for your SQL keywords.
-                </p>
-                <p>
-                  Specific model and column names, however, are case sensitive
-                  and must match those in your database. If your column or
-                  database name contains a capital letter, you must place that
-                  column name in double quotes (") i.e. songs."artistId".
-                </p>
-                <p>
-                  When using the ORDER BY keyword, you must indicate both the
-                  model and column name that you wish to order by i.e. ORDER BY
-                  artists.age ASC.
-                </p>
+                <ul>
+                  <li className="listGrammar">
+                    Currently, only select statements are supported.
+                  </li>
+                  <li className="listGrammar">
+                    When writing a select statement, you may use either capital
+                    or lowercase letters for your SQL keywords.
+                  </li>
+                  <li className="listGrammar">
+                    Specific model and column names, however, are case sensitive
+                    and must match those in your database. If your column or
+                    database name contains a capital letter, you must place that
+                    column name in double quotes (") i.e. songs."artistId".
+                  </li>
+                  <li className="listGrammar">
+                    When using the ORDER BY keyword, you must indicate both the
+                    model and column name that you wish to order by i.e. ORDER
+                    BY artists.age ASC.
+                  </li>
+                  <li className="listGrammar">
+                    When using a string from a specific piece of data, wrap the
+                    string in single quotes (') i.e. select * from artists where
+                    artists.name = 'Beyonce'.
+                  </li>
+                </ul>
                 <img />
               </div>
             </div>
