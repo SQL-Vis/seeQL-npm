@@ -96,7 +96,9 @@ export class SearchVis extends React.Component {
                                 </span>
                               }
                             >
-                              <i className="material-icons">feedback</i>
+                              <i className="material-icons bouncing-icon">
+                                feedback
+                              </i>
                             </Tooltip>
                           )}
                       </td>
