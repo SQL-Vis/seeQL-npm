@@ -33,6 +33,10 @@ form div {
   display: inline-block;
 }
 
+input {
+  overflow: visible;
+}
+
 .table-container {
   margin: 20px;
   display: flex;
@@ -232,12 +236,12 @@ hr {
 }
 
 .topLeftDiv {
-  width: 67%;
+  width: 80%;
   margin-top: 18px;
 }
 
 .topRightDiv {
-  width: 33%;
+  width: 20%;
   margin-top: 30px;
 }
 
