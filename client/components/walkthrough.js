@@ -44,41 +44,43 @@ export default class WalkThrough extends React.Component {
             <div id="results" className="section scrollspy">
               <div>
                 <h5>Viewing results and visualization </h5>
-                <p>
-                  The key can be used for identifying denotations represented by
-                  icons and arrows in the schema diagram.
-                </p>
+                <p>Use the key to decode visualizations.</p>
                 <img id="keyImg" src="./key.png" />
                 <ul>
                   <li className="list">
-                    - Primary Key indicates a model's primary identifying key.
-                    This will typically be "id"
+                    <span className="bold">- Primary Key</span> indicates a
+                    model's primary identifying key. This will typically be "id"
                   </li>
                   <li className="list">
-                    - Foreign Key indicates a foreign key that associates a
-                    model to another model.
+                    <span className="bold">- Foreign Key</span> indicates a
+                    foreign key that associates a model to another model.
                   </li>
                   <li className="list">
-                    - Order Ascending indicates that the results are ordered by
-                    this column in ascending order (lowest to highest, A-Z)
+                    <span className="bold">- Order Ascending</span> indicates
+                    that the results are ordered by this column in ascending
+                    order (lowest to highest, A-Z)
                   </li>
                   <li className="list">
-                    - Order Descending indicates that the results are ordered by
-                    this column in descending order (highest to lowest, Z-A)
+                    <span className="bold">- Order Descending</span> indicates
+                    that the results are ordered by this column in descending
+                    order (highest to lowest, Z-A)
                   </li>
                   <li className="list">
-                    - Join indicates that two models are being joined via
-                    primary and foreign keys. The arrow points from the primary
-                    key column to the foreign key column.{' '}
+                    <span className="bold">- Join</span> indicates that two
+                    models are being joined via primary and foreign keys. The
+                    arrow points from the primary key column to the foreign key
+                    column.{' '}
                   </li>
                   <li className="list">
-                    - Column Selected indicates which columns in each model are
-                    being targeted from the query and will appear in the results
-                    table. Columns will be highlited if they are selected.
+                    <span className="bold">- Column Selected</span> indicates
+                    which columns in each model are being targeted from the
+                    query and will appear in the results table. Columns will be
+                    highlighted if they are selected.
                   </li>
                   <li className="list">
-                    - Where Filter indicates that the query results are
-                    constrained by a where clause on the marked column.
+                    <span className="bold">- Where Filter</span> indicates that
+                    the query results are constrained by a where clause on the
+                    marked column.
                   </li>
                 </ul>
                 <p>
