@@ -451,6 +451,7 @@ select {
   border: none;
 }
 
+
 .list {
   margin-top: 8px;
   margin-left: 15px;
@@ -466,4 +467,22 @@ select {
 
 #keyTutorialContainer {
   display: flex;
+
+.bouncing-icon {
+  animation: bounce2 1.5s 0.5s linear infinite;
+}
+
+@keyframes bounce2 {
+  0%,
+  50%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.8);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+
 }
