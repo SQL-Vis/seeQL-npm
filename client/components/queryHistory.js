@@ -8,13 +8,7 @@ export class QueryHistory extends React.Component {
   constructor() {
     super()
     this.state = {
-      options: [
-        'SELECT title FROM songs',
-        'SELECT songs.title, artists.age FROM songs RIGHT JOIN artists ON songs."artistId" = artists.id',
-        'SELECT songs.title, songs.length, artists.name FROM songs LEFT JOIN artists ON songs."artistId" = artists.id ORDER BY artists.name DESC',
-        'SELECT songs.title, albums.title, artists.name FROM songs LEFT JOIN artists ON songs."artistId" = artists.id LEFT JOIN albums on songs."albumId" = albums.id',
-        'SELECT songs.title, artists.name, artists.age from songs RIGHT JOIN artists on songs."artistId" = artists.id WHERE artists.age > 28 AND artists.age < 35'
-      ]
+      options: []
     }
     this.handleSelect = this.handleSelect.bind(this)
     this.generateDefaultQuery = this.generateDefaultQuery.bind(this)
