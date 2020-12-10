@@ -5,7 +5,6 @@ import {
   QueryInput,
   Result,
   Key,
-  CurrentSearch,
   QueryHistory,
   Footer,
   Loader

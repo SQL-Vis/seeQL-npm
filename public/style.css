@@ -42,8 +42,12 @@ form div {
 }
 
 td {
-  border-top: solid 0.8px lightgrey;
   padding: 7px;
+}
+
+td,
+th {
+  border-radius: 0px;
 }
 
 .vis-table {
@@ -163,14 +167,13 @@ td {
   margin-right: 20px;
 }
 
+.collection {
+  border: none;
+}
+
 .menuIcon {
   padding-right: 10px;
   padding-left: 3px;
-}
-
-.copyright {
-  position: fixed;
-  bottom: 10px;
 }
 
 .footer {
@@ -249,9 +252,11 @@ hr {
 .collapsible-header {
   display: flex;
   justify-content: space-between;
+  border: none;
 }
 
 .collapsible-body {
+  border: none;
   padding: 0px;
 }
 
@@ -280,7 +285,7 @@ hr {
 
 .browser-default {
   border-radius: 5px;
-  padding-left: 25px;
+  padding-left: 3%;
   font-family: sans-serif;
   font-weight: 300;
   background-color: var(--offWhite);
@@ -431,4 +436,8 @@ div.loader {
   75% {
     transform: scale(1.4);
   }
+}
+
+select {
+  border: none;
 }
