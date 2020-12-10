@@ -8,14 +8,34 @@ export class QueryInput extends React.Component {
   constructor() {
     super()
     this.state = {
-      query: ''
+      query: '',
+      copied: 'copy'
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.copyText = this.copyText.bind(this)
+  }
+
+  componentDidUpdate(prevprops) {
+    if (
+      prevprops.searches.currentSearch !== this.props.searches.currentSearch
+    ) {
+      this.setState({
+        copied: 'copy',
+        query: this.props.searches.currentSearch
+      })
+    }
+  }
+
+  copyText() {
+    this.setState({...this.state, copied: 'copied!'})
+    let copyText = document.getElementById('copyText')
+    copyText.select()
+    document.execCommand('Copy')
   }
 
   handleChange(e) {
-    this.setState({query: e.target.value})
+    this.setState({copied: 'copy', query: e.target.value})
   }
 
   handleSubmit(e) {
@@ -24,7 +44,6 @@ export class QueryInput extends React.Component {
     this.props.getResult(this.state.query)
     this.props.setCurrentSearch(this.state.query)
     this.props.setLastSearches(this.state.query)
-    this.setState({...this.state, query: ''})
   }
 
   render() {
@@ -38,8 +57,7 @@ export class QueryInput extends React.Component {
                 type="text"
                 onChange={this.handleChange}
                 placeholder="Input SQL query here"
-                id="textarea1"
-                className="materialize-textarea"
+                id="copyText"
               />
             </div>
             <button
@@ -49,6 +67,24 @@ export class QueryInput extends React.Component {
             >
               Submit
               <i className="material-icons right">send</i>
+            </button>
+            <button
+              className="btn waves-effect waves-light"
+              type="button"
+              name="action"
+              onClick={() => this.setState({copied: 'copy', query: ''})}
+            >
+              Clear
+              <i className="material-icons right">clear</i>
+            </button>
+            <button
+              className="btn waves-effect waves-light"
+              type="button"
+              name="action"
+              onClick={this.copyText}
+            >
+              {this.state.copied}
+              <i className="material-icons right">content_copy</i>
             </button>
             {(this.props.error.parser.error ||
               this.props.error.database.error) && (
