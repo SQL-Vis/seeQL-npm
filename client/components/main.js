@@ -10,6 +10,8 @@ import {
   Footer,
   Loader
 } from './index'
+import {fetchTables} from '../store/searchvis'
+import {fetchResult} from '../store/result'
 
 export class Main extends React.Component {
   constructor() {
@@ -17,12 +19,30 @@ export class Main extends React.Component {
     this.state = {
       loading: true
     }
+    this.handleClick = this.handleClick.bind(this)
   }
 
   componentDidMount() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.collapsible')
+      var instances = M.Collapsible.init(elems)
+    })
     this.setState({
       loading: false
     })
+  }
+
+  handleClick() {
+    let currentSearch
+    if (!this.props.searches.currentSearch) {
+      currentSearch = this.props.searches.lastSearches[
+        this.props.searches.lastSearches.length - 1
+      ]
+    } else {
+      currentSearch = this.props.searches.currentSearch
+    }
+    console.log(currentSearch)
+    this.props.getResult(currentSearch)
   }
 
   render() {
@@ -43,22 +63,40 @@ export class Main extends React.Component {
               <Key />
             </div>
           </div>
+
           <div className="sectionBox">
-            <div className="sectionTitle">
-              Database Schema & Search Visualization
-            </div>
-            <div className="queryVisBox">
-              <SearchVis />
-            </div>
+            <ul className="collapsible">
+              <li onClick={this.handleClick}>
+                <div className="sectionTitle collapsible-header">
+                  Query Result
+                  <i className="material-icons">arrow_drop_down_circle</i>
+                </div>
+                {this.props.result.columns ? (
+                  <div className="queryVisBox collapsible-body">
+                    <Result />
+                  </div>
+                ) : (
+                  <div className="collapsible-body" id="noResult">
+                    Run a query to see results
+                  </div>
+                )}
+              </li>
+            </ul>
           </div>
-          {this.props.result.columns && (
-            <div className="sectionBox">
-              <div className="sectionTitle">Query Result</div>
-              <div className="resultBox">
-                <Result />
-              </div>
-            </div>
-          )}
+
+          <div className="sectionBox">
+            <ul className="collapsible">
+              <li className="active" onClick={this.props.getModels}>
+                <div className="sectionTitle collapsible-header">
+                  Database Schema & Search Visualization
+                  <i className="material-icons">arrow_drop_down_circle</i>
+                </div>
+                <div className="queryVisBox collapsible-body">
+                  <SearchVis />
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
         <Footer />
       </div>
@@ -67,7 +105,17 @@ export class Main extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  result: state.result
+  result: state.result,
+  searches: state.searches
 })
 
-export default connect(mapStateToProps)(Main)
+const mapDispatchToProps = dispatch => ({
+  getModels: () => {
+    dispatch(fetchTables())
+  },
+  getResult: queryStr => {
+    dispatch(fetchResult(queryStr))
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)
