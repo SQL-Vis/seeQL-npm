@@ -16,9 +16,12 @@ export class Main extends React.Component {
   constructor() {
     super()
     this.state = {
-      loading: true
+      loading: true,
+      visOpen: true,
+      resultOpen: false
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleVisClick = this.handleVisClick.bind(this)
+    this.handleResultClick = this.handleResultClick.bind(this)
   }
 
   componentDidMount() {
@@ -27,11 +30,12 @@ export class Main extends React.Component {
       var instances = M.Collapsible.init(elems)
     })
     this.setState({
+      ...this.state,
       loading: false
     })
   }
 
-  handleClick() {
+  handleResultClick() {
     let currentSearch
     if (!this.props.searches.currentSearch) {
       currentSearch = this.props.searches.lastSearches[
@@ -41,6 +45,18 @@ export class Main extends React.Component {
       currentSearch = this.props.searches.currentSearch
     }
     if (currentSearch) this.props.getResult(currentSearch)
+    this.setState({
+      ...this.state,
+      resultOpen: !this.state.resultOpen
+    })
+  }
+
+  handleVisClick() {
+    this.props.getModels()
+    this.setState({
+      ...this.state,
+      visOpen: !this.state.visOpen
+    })
   }
 
   render() {
@@ -63,10 +79,18 @@ export class Main extends React.Component {
 
           <div className="sectionBox">
             <ul className="collapsible">
-              <li onClick={this.handleClick}>
+              <li onClick={this.handleResultClick}>
                 <div className="sectionTitle collapsible-header">
                   Query Result
-                  <i className="material-icons">arrow_drop_down_circle</i>
+                  <i
+                    className={
+                      this.state.resultOpen
+                        ? 'material-icons open'
+                        : 'material-icons'
+                    }
+                  >
+                    arrow_drop_down_circle
+                  </i>
                 </div>
                 {this.props.result.columns ? (
                   <div className="queryVisBox collapsible-body">
@@ -83,10 +107,18 @@ export class Main extends React.Component {
 
           <div className="sectionBox">
             <ul className="collapsible">
-              <li className="active" onClick={this.props.getModels}>
+              <li className="active" onClick={this.handleVisClick}>
                 <div className="sectionTitle collapsible-header">
                   Database Schema & Search Visualization
-                  <i className="material-icons">arrow_drop_down_circle</i>
+                  <i
+                    className={
+                      this.state.visOpen
+                        ? 'material-icons open'
+                        : 'material-icons'
+                    }
+                  >
+                    arrow_drop_down_circle
+                  </i>
                 </div>
                 <div className="queryVisBox collapsible-body">
                   <SearchVis />

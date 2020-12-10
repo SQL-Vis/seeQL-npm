@@ -32,7 +32,7 @@ export class QueryHistory extends React.Component {
     let column = ''
     let table = ''
     if (this.props.tables.length) {
-      column = this.props.tables[0][Object.keys(this.props.tables[0])[0]][1]
+      column = this.props.tables[0][Object.keys(this.props.tables[0])[0]][0]
       table = Object.keys(this.props.tables[0])[0]
     }
     if (column.toLowerCase() !== column) {
