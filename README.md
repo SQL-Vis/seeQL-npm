@@ -1,33 +1,33 @@
-# seeQL-ware
+# seeQLware
 
-_seeQL-ware is SQL query visualization middleware for Node.js. seeQL-ware allows users to test and visualize SQL queries using a connected PostgreSQL database._
+_seeQLware is SQL query visualization middleware for Node.js. seeQLware allows users to test and visualize SQL queries using a connected PostgreSQL database._
 
 ## Demo
 
-View an example seeQL-ware interface with dummy data at https://seeql-app.herokuapp.com. This demo is set up with a default database that has three tables of data – songs, albums, and artists.
+View an example seeQLware interface with dummy data at https://seeql-app.herokuapp.com. This demo is set up with a default database that has three tables of data – songs, albums, and artists.
 
 ## Project Requirements
 
-* Express server
-* PostgreSQL database
-* Node.js environment
+- Express server
+- PostgreSQL database
+- Node.js environment
 
 ## Getting Started
 
 ### Install Connect
 
 ```sh
-$ npm install seeql-ware --save-dev
+$ npm install seeqlware --save-dev
 ```
 
 ## Hook Up Your Project
 
-### Import seeQL-ware
+### Import seeQLware
 
 In your server initiation file, require this library:
 
 ```js
-const seeql = require('seeql-ware')
+const seeql = require('seeqlware')
 ```
 
 ### Import Your Database Instance
@@ -60,7 +60,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 ```
 
-## Use seeQL-ware
+## Use seeQLware
 
 To submit a custom query, type a query into the form and click submit.
 
@@ -90,9 +90,9 @@ Querying the column artistId from the table artists would look like `"artistId".
 
 ## People
 
-seeQL-ware wouldn't exist without all the people involved!
+seeQLware wouldn't exist without all the people involved!
 
-The original authors of seeQL-ware are [Riley Butterfield](https://github.com/rileybutterfield), [Laura Campbell](https://github.com/lmmcampbell), and [Vivian Xu](https://github.com/vivianxu1230).
+The original authors of seeQLware are [Riley Butterfield](https://github.com/rileybutterfield), [Laura Campbell](https://github.com/lmmcampbell), and [Vivian Xu](https://github.com/vivianxu1230).
 
 Special thanks to Natalie Lane & Johnny O'Mara for their guidance on this project!
 
